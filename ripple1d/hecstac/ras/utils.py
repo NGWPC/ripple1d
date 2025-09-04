@@ -86,6 +86,7 @@ def search_contents(
     expect_one: bool = True,
     require_one: bool = True,
     regex: bool = False,
+    maxsplit: int = 1,
 ) -> list[str] | str:
     """Split a line by a token and returns the second half of the line if the search_string is found in the first half.
 
@@ -98,7 +99,7 @@ def search_contents(
     results = []
     for line in lines:
         if matches(line):
-            val = line.split(token)[1]
+            val = line.split(token, maxsplit)[1]
             if val != "":
                 results.append(val)
 
@@ -116,7 +117,7 @@ def handle_spaces(line: str, lines: list[str]):
     """Handle spaces in the line."""
     if line in lines:
         return line
-    elif handle_spaces_arround_equals(line.rstrip(" "), lines):
+    elif handle_spaces_arround_equals(line.rstrip(" "), lines) in lines:
         return handle_spaces_arround_equals(line.rstrip(" "), lines)
     elif handle_spaces_arround_equals(line + " ", lines) in lines:
         return handle_spaces_arround_equals(line + " ", lines)

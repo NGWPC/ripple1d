@@ -200,9 +200,9 @@ def xs_concave_hull(xs_df: gpd.GeoDataFrame, junction: gpd.GeoDataFrame = None) 
     polygons = []
     if len(xs_df) <= 0:
         return None
-    assert not all(
-        [i.is_empty for i in xs_df.geometry]
-    ), "No valid cross-sections found.  Possibly non-georeferenced model"
+    assert not all([i.is_empty for i in xs_df.geometry]), (
+        "No valid cross-sections found.  Possibly non-georeferenced model"
+    )
     assert len(xs_df) > 1, "Only one valid cross-section found."
     for river_reach in xs_df["river_reach"].unique():
         xs_subset = xs_df[xs_df["river_reach"] == river_reach].sort_values("river_station")
@@ -305,12 +305,14 @@ def junction_hull(xs: gpd.GeoDataFrame, junction: gpd.GeoSeries) -> gpd.GeoDataF
     return Polygon(coords)
 
 
-def search_contents(lines: list, search_string: str, token: str = "=", expect_one: bool = True) -> list[str]:
+def search_contents(
+    lines: list, search_string: str, token: str = "=", expect_one: bool = True, maxsplit: int = 1
+) -> list[str]:
     """Split a line by a token and returns the second half of the line if the search_string is found in the first half."""
     results = []
     for line in lines:
         if f"{search_string}{token}" in line:
-            results.append(line.split(token)[1])
+            results.append(line.split(token, maxsplit)[1])
 
     if expect_one and len(results) > 1:
         raise ValueError(f"expected 1 result, got {len(results)}")
@@ -423,7 +425,7 @@ def handle_spaces(line: str, lines: list[str]):
     """Handle spaces in the line."""
     if line in lines:
         return line
-    elif handle_spaces_arround_equals(line.rstrip(" "), lines):
+    elif handle_spaces_arround_equals(line.rstrip(" "), lines) in lines:
         return handle_spaces_arround_equals(line.rstrip(" "), lines)
     elif handle_spaces_arround_equals(line + " ", lines) in lines:
         return handle_spaces_arround_equals(line + " ", lines)
@@ -627,7 +629,7 @@ class RASWalker(NetworkWalker):
             trib_rivers = r["us_rivers"].split(",")
             trib_reaches = r["us_reaches"].split(",")
             if output == "reach":
-                target = [f'{r["ds_rivers"].ljust(16)},{r["ds_reaches"].ljust(16)}'] * 2
+                target = [f"{r['ds_rivers'].ljust(16)},{r['ds_reaches'].ljust(16)}"] * 2
             elif output == "distance":
                 target = [float(i) for i in r["junction_lengths"].split(",")]
             for riv, rch, t in zip(trib_rivers, trib_reaches, target):
