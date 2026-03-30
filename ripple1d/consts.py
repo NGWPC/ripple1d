@@ -81,3 +81,7 @@ for k in keys:
     TERRAIN_AGREEMENT_PRECISION[f"max_el_residuals_{k}"] = TERRAIN_AGREEMENT_PRECISION[k]
 
 DEFAULT_MAX_WALK = 3e4
+
+# nwm network columns
+NWM_ID_COL = "fp_id"
+NWM_TO_ID_COL = "fp_to_id"

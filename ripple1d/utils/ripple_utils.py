@@ -34,7 +34,7 @@ from shapely import (
 )
 from shapely.ops import split, substring
 
-from ripple1d.consts import DEFAULT_MAX_WALK
+from ripple1d.consts import DEFAULT_MAX_WALK, NWM_ID_COL, NWM_TO_ID_COL
 from ripple1d.errors import (
     InvalidNetworkPath,
     RASComputeError,
@@ -571,8 +571,8 @@ class NetworkWalker:
 class NWMWalker(NetworkWalker):
     """Subclass to walk the National Water Model network."""
 
-    ID_COL: str = "ID"
-    TO_ID_COL: str = "to_id"
+    ID_COL: str = NWM_ID_COL
+    TO_ID_COL: str = NWM_TO_ID_COL
 
     def __init__(
         self,
