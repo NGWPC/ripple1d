@@ -82,6 +82,6 @@ for k in keys:
 
 DEFAULT_MAX_WALK = 3e4
 
-# nwm network columns
-NWM_ID_COL = "fp_id"
-NWM_TO_ID_COL = "fp_to_id"
+# hydrofabric network columns
+NETWORK_ID_COL = "fp_id"
+NETWORK_TO_ID_COL = "fp_to_id"

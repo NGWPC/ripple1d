@@ -15,7 +15,7 @@ from ripple1d.conflate.rasfim import (
     ras_xs_geometry_data,
     walk_network,
 )
-from ripple1d.consts import NWM_ID_COL
+from ripple1d.consts import NETWORK_ID_COL
 from ripple1d.errors import InvalidNetworkPath
 from ripple1d.ops.metrics import compute_conflation_metrics
 from ripple1d.utils.ripple_utils import clip_ras_centerline
@@ -48,10 +48,10 @@ def conflate_single_nwm_reach(rfc: RasFimConflater, nwm_reach_id: int):
         ds_most_reach_id = nearest_line_to_point(local_nwm_reaches, ras_stop_point)[0]
 
         potential_reach_path = walk_network(local_nwm_reaches, us_most_reach_id, ds_most_reach_id)
-        candidate_reaches = local_nwm_reaches.query(f"{NWM_ID_COL} in {potential_reach_path}")
-        if len(candidate_reaches.query(f"{NWM_ID_COL} == {nwm_reach_id}")) == 1:
+        candidate_reaches = local_nwm_reaches.query(f"{NETWORK_ID_COL} in {potential_reach_path}")
+        if len(candidate_reaches.query(f"{NETWORK_ID_COL} == {nwm_reach_id}")) == 1:
             nwm_reach_id_identified = True
-            return ras_reaches_metadata(rfc, candidate_reaches[candidate_reaches[NWM_ID_COL] == nwm_reach_id])
+            return ras_reaches_metadata(rfc, candidate_reaches[candidate_reaches[NETWORK_ID_COL] == nwm_reach_id])
     if not nwm_reach_id_identified:
         raise ValueError(f"nwm_reach_id {nwm_reach_id} not conflating to the ras model geometry.")
 

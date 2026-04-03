@@ -16,7 +16,7 @@ from fiona.errors import DriverError
 from shapely import LineString, MultiLineString, Point, Polygon, box, reverse
 from shapely.ops import linemerge, nearest_points, transform
 
-from ripple1d.consts import METERS_PER_FOOT, NWM_ID_COL, NWM_TO_ID_COL
+from ripple1d.consts import METERS_PER_FOOT, NETWORK_ID_COL, NETWORK_TO_ID_COL
 from ripple1d.errors import BadConflation
 from ripple1d.utils.ripple_utils import (
     NWMWalker,
@@ -352,7 +352,7 @@ class RasFimConflater:
         """Local gages for the NWM reaches."""
         local_reaches = self.local_nwm_reaches()
         gages = local_reaches["gages"]
-        reach_ids = local_reaches[NWM_ID_COL]
+        reach_ids = local_reaches[NETWORK_ID_COL]
         return {reach_id: gage for reach_id, gage in zip(reach_ids, gages) if pd.notna(gage) and gage.strip()}
 
     def local_lakes(self):
@@ -415,7 +415,7 @@ class RasFimConflater:
     def get_nwm_reach_metadata(self, reach_id) -> dict:
         """Make a dictionary with relevant NWM information."""
         metadata = {}
-        flow_data = self.nwm_reaches[self.nwm_reaches[NWM_ID_COL] == reach_id].iloc[0]
+        flow_data = self.nwm_reaches[self.nwm_reaches[NETWORK_ID_COL] == reach_id].iloc[0]
         if isinstance(flow_data["high_flow_threshold"], float):
             metadata["low_flow"] = int(flow_data["high_flow_threshold"] * self.min_flow_multiplier)
         else:
@@ -435,7 +435,7 @@ class RasFimConflater:
             raise RuntimeError(f'Invalid flow combination. Low: {metadata["low_flow"]}. High: {metadata["high_flow"]}')
 
         try:
-            metadata["network_to_id"] = str(flow_data[NWM_TO_ID_COL])
+            metadata["network_to_id"] = str(flow_data[NETWORK_TO_ID_COL])
         except:
             logging.warning(f"No to_id data for {reach_id}")
             metadata["network_to_id"] = "-9999"
@@ -464,7 +464,7 @@ def endpoints_from_multiline(mline: MultiLineString) -> Tuple[Point, Point]:
 
 
 def nearest_line_to_point(
-    lines: gpd.GeoDataFrame, point: Point, column_id: str = NWM_ID_COL, search_radius: int = 1e9, number_of_returns: int = 0
+    lines: gpd.GeoDataFrame, point: Point, column_id: str = NETWORK_ID_COL, search_radius: int = 1e9, number_of_returns: int = 0
 ) -> np.array:
     """
     Return the ID of the line(s) closest to the point.
@@ -522,15 +522,15 @@ def walk_network(gdf: gpd.GeoDataFrame, start_id: int, stop_id: int, river_reach
     ids = [current_id]
 
     while current_id != stop_id:
-        result = gdf.query(f"{NWM_ID_COL} == {current_id}")
+        result = gdf.query(f"{NETWORK_ID_COL} == {current_id}")
 
         if result.empty:
             logging.error(
-                f"No row found with {NWM_ID_COL} = {current_id} | start_id: {start_id} | stop_id: {stop_id} | RAS river-reach: {river_reach_name}"
+                f"No row found with {NETWORK_ID_COL} = {current_id} | start_id: {start_id} | stop_id: {stop_id} | RAS river-reach: {river_reach_name}"
             )
             break
 
-        to_value = result.iloc[0][NWM_TO_ID_COL]
+        to_value = result.iloc[0][NETWORK_TO_ID_COL]
         ids.append(int(to_value))
         current_id = to_value
         if current_id == stop_id:
@@ -647,7 +647,7 @@ def map_reach_xs(rfc: RasFimConflater, reach: gpd.GeoSeries) -> dict:
     us_xs, ds_xs = retrieve_us_ds_xs(rfc, intersected_xs, reach)
 
     # detemine if us end of the nwm reach is between two cross sections. If so grab the upstream cross section (only if stream order=1)
-    if reach.stream_order == 1 and getattr(reach, NWM_ID_COL) not in rfc.nwm_reaches[NWM_TO_ID_COL].values:
+    if reach.stream_order == 1 and getattr(reach, NETWORK_ID_COL) not in rfc.nwm_reaches[NETWORK_TO_ID_COL].values:
         us_xs = check_for_us_xs(us_xs, rfc.ras_xs)
 
     # Initialize us_xs data with min /max elevation, then build the dict with added info
@@ -665,7 +665,7 @@ def map_reach_xs(rfc: RasFimConflater, reach: gpd.GeoSeries) -> dict:
             ds_xs = get_us_most_xs_from_junction(rfc, ras_river, ras_reach)
             ds_data = ras_xs_geometry_data(rfc, ds_xs)
             logging.debug(
-                f"Conflating to junction for reach {getattr(reach, NWM_ID_COL)}: {us_data['river']} {us_data['reach']} to {ds_data['river']} {ds_data['reach']}"
+                f"Conflating to junction for reach {getattr(reach, NETWORK_ID_COL)}: {us_data['river']} {us_data['reach']} to {ds_data['river']} {ds_data['reach']}"
             )
         except ValueError as e:
             ds_data = ras_xs_geometry_data(rfc, ds_xs)
@@ -790,16 +790,16 @@ def validate_reach_conflation(reach_xs_data: dict, reach_id: str):
 def ras_reaches_metadata(rfc: RasFimConflater, candidate_reaches: gpd.GeoDataFrame):
     """Return the metadata for the RAS reaches."""
     reach_metadata = OrderedDict()
-    candidate_reaches = rfc.nwm_reaches[rfc.nwm_reaches[NWM_ID_COL].isin(candidate_reaches)]
+    candidate_reaches = rfc.nwm_reaches[rfc.nwm_reaches[NETWORK_ID_COL].isin(candidate_reaches)]
     for reach in candidate_reaches.itertuples():
         try:
             # get the xs data for the reach
             ras_xs_data = map_reach_xs(rfc, reach)
             if ras_xs_data is not None:
-                validate_reach_conflation(ras_xs_data, str(getattr(reach, NWM_ID_COL)))
-                reach_metadata[getattr(reach, NWM_ID_COL)] = ras_xs_data | rfc.get_nwm_reach_metadata(getattr(reach, NWM_ID_COL))
+                validate_reach_conflation(ras_xs_data, str(getattr(reach, NETWORK_ID_COL)))
+                reach_metadata[getattr(reach, NETWORK_ID_COL)] = ras_xs_data | rfc.get_nwm_reach_metadata(getattr(reach, NETWORK_ID_COL))
         except Exception as e:
-            logging.error(f"network id: {getattr(reach, NWM_ID_COL)} | Error: {e}")
-            logging.error(f"network id: {getattr(reach, NWM_ID_COL)} | Traceback: {traceback.format_exc()}")
+            logging.error(f"network id: {getattr(reach, NETWORK_ID_COL)} | Error: {e}")
+            logging.error(f"network id: {getattr(reach, NETWORK_ID_COL)} | Traceback: {traceback.format_exc()}")
 
     return reach_metadata

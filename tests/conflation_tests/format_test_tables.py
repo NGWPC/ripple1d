@@ -5,7 +5,7 @@ import pandas as pd
 from pyogrio.errors import DataLayerError
 from shapely import LineString, MultiLineString
 
-from ripple1d.consts import NWM_ID_COL, NWM_TO_ID_COL
+from ripple1d.consts import NETWORK_ID_COL, NETWORK_TO_ID_COL
 from tests.conflation_tests.classes import PathManager
 from tests.conflation_tests.consts import JUNCTION_RAS_DATA, RIVER_RAS_DATA, TESTS, XS_RAS_DATA
 
@@ -43,7 +43,7 @@ def format_tables(ras_dir_name: str):
     nwm["f100year"] = 100.0
     nwm["high_flow_threshold"] = 10.0
     nwm["stream_order"] = 2
-    nwm.loc[~nwm[NWM_ID_COL].isin(nwm[NWM_TO_ID_COL].to_list()), "stream_order"] = 1
+    nwm.loc[~nwm[NETWORK_ID_COL].isin(nwm[NETWORK_TO_ID_COL].to_list()), "stream_order"] = 1
     nwm.to_parquet(pm.nwm_path, write_covering_bbox=True)
 
 
