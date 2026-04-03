@@ -52,9 +52,10 @@ Frequently Asked Questions
 
 .. dropdown:: What boundary condition is used?
 
-    Regardless of source model boundary condition, a downstream boundary condition
-    of 0.001 ft/ft is applied for the initial run of all submodels. The value of 0.001
-    may be updated by manually editing the ripple1d\\consts.py file.
+    A normal depth downstream boundary condition is applied for the initial run of
+    all submodels. The slope used is the NWM reach slope from the hydrofabric data.
+    If no slope is available, a default of 0.001 ft/ft is used (defined in
+    ripple1d/consts.py as NORMAL_DEPTH).
 
 .. dropdown:: Which plan, geometry, and flow files are used?
 

@@ -16,7 +16,7 @@ from fiona.errors import DriverError
 from shapely import LineString, MultiLineString, Point, Polygon, box, reverse
 from shapely.ops import linemerge, nearest_points, transform
 
-from ripple1d.consts import METERS_PER_FOOT
+from ripple1d.consts import METERS_PER_FOOT, NORMAL_DEPTH
 from ripple1d.errors import BadConflation
 from ripple1d.utils.ripple_utils import (
     NWMWalker,
@@ -439,6 +439,12 @@ class RasFimConflater:
         except:
             logging.warning(f"No to_id data for {reach_id}")
             metadata["network_to_id"] = "-9999"
+
+        try:
+            metadata["ds_slope"] = float(flow_data["slope"])
+        except Exception:
+            logging.warning(f"No slope data for {reach_id}, using default {NORMAL_DEPTH}")
+            metadata["ds_slope"] = NORMAL_DEPTH
 
         if reach_id in self.local_gages.keys():
             gage_id = self.local_gages[reach_id].replace(" ", "")

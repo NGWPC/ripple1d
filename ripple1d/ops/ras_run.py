@@ -10,7 +10,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 
-from ripple1d.consts import DEFAULT_EPSG, MIN_FLOW
+from ripple1d.consts import DEFAULT_EPSG, MIN_FLOW, NORMAL_DEPTH
 from ripple1d.data_model import FlowChangeLocation, NwmReachModel
 from ripple1d.errors import UnitsError
 from ripple1d.ras import RasManager
@@ -59,7 +59,8 @@ def create_model_run_normal_depth(
     stage-discharge rating curve for the HEC-RAS submodel. Analysis flows are
     evenly spaced between the min and max discharge for the reach that were
     established by running conflate_model.  The downstream boundary condition
-    for these runs are set to normal depth with slope of 0.001.
+    for these runs are set to normal depth using the NWM reach slope
+    (falls back to 0.001 if unavailable).
     """
     logging.info(f"create_model_run_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
@@ -108,6 +109,7 @@ def create_model_run_normal_depth(
             nwm_rm.model_name,
             [fcl],
             [i for i in profile_name_map.keys()],
+            normal_depth=nwm_rm.ripple1d_parameters.get("ds_slope", NORMAL_DEPTH),
             write_depth_grids=False,
             show_ras=show_ras,
             run_ras=True,
@@ -164,8 +166,8 @@ def run_incremental_normal_depth(
     model plan with suffix "_ind".  A set of evenly spaced stages are selected
     between the min and max, and discharge values are estimated with linear
     interpolation. The final set of estimated discharges are then run through
-    the model with a normal depth downstream boundary condition with slope of
-    0.001.
+    the model with a normal depth downstream boundary condition using the NWM
+    reach slope (falls back to 0.001 if unavailable).
     """
     logging.info("run_incremental_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
@@ -209,6 +211,7 @@ def run_incremental_normal_depth(
         nwm_rm.model_name,
         [fcl],
         [i for i in profile_name_map.keys()],
+        normal_depth=nwm_rm.ripple1d_parameters.get("ds_slope", NORMAL_DEPTH),
         write_depth_grids=write_depth_grids,
         show_ras=show_ras,
         run_ras=True,
