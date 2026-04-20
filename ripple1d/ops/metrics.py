@@ -13,7 +13,7 @@ import pyproj
 from shapely import Geometry, LineString, MultiLineString, MultiPoint, Point
 from shapely.ops import linemerge
 
-from ripple1d.consts import HYDROFABRIC_CRS, METERS_PER_FOOT
+from ripple1d.consts import HYDROFABRIC_CRS, METERS_PER_FOOT, NETWORK_ID_COL, NETWORK_TO_ID_COL
 from ripple1d.data_model import XS
 from ripple1d.ops.subset_gpkg import RippleGeopackageSubsetter
 from ripple1d.utils.ripple_utils import fix_reversed_xs, xs_concave_hull
@@ -169,7 +169,7 @@ class ConflationMetrics:
         for i, row in to_reaches.iterrows():
             if row[geom_name].intersects(self.xs_gdf.union_all()):
                 overlap = row[geom_name].intersection(self.hull_gdf["geometry"].iloc[0]).length / METERS_PER_FOOT
-                reach_ids.append({"id": str(row["ID"]), "overlap": int(overlap)})
+                reach_ids.append({"id": str(row[NETWORK_ID_COL]), "overlap": int(overlap)})
         return reach_ids
 
     def eclipsed_reaches(self, network_reaches: gpd.GeoDataFrame) -> dict:
@@ -178,7 +178,7 @@ class ConflationMetrics:
             return []
         eclipsed_reaches = network_reaches[network_reaches.covered_by(self.hull_gdf["geometry"].iloc[0])]
 
-        return [str(row["ID"]) for _, row in eclipsed_reaches.iterrows()]
+        return [str(row[NETWORK_ID_COL]) for _, row in eclipsed_reaches.iterrows()]
 
     def compute_coverage_metrics(self, xs_gdf: gpd.GeoDataFrame) -> dict:
         """Calculate the coverage metrics for a set of cross sections."""
@@ -289,7 +289,7 @@ def compute_conflation_metrics(source_model_directory: str, model_name: str, sou
                 layers[layer] = gdf.to_crs(HYDROFABRIC_CRS)
 
             network_reaches = gpd.read_parquet(network_pq_path, bbox=layers["XS"].total_bounds)
-            network_reach = linemerge(network_reaches.loc[network_reaches["ID"] == int(network_id)].geometry.iloc[0])
+            network_reach = linemerge(network_reaches.loc[network_reaches[NETWORK_ID_COL] == int(network_id)].geometry.iloc[0])
             network_reach_plus_ds_reach = combine_reaches(network_reaches, network_id)
 
             cm = ConflationMetrics(
@@ -314,7 +314,7 @@ def compute_conflation_metrics(source_model_directory: str, model_name: str, sou
                 next_to_id = None
 
             overlapped_reaches = cm.overlapped_reaches(
-                network_reaches[network_reaches["ID"].isin([int(to_id), next_to_id])]
+                network_reaches[network_reaches[NETWORK_ID_COL].isin([int(to_id), next_to_id])]
             )
             eclipsed_reaches = get_eclipsed_reaches(conflation_parameters, network_id)
 
@@ -336,13 +336,13 @@ def compute_conflation_metrics(source_model_directory: str, model_name: str, sou
 
 def combine_reaches(network_reaches: gpd.GeoDataFrame, network_id: str) -> LineString:
     """Combine network reaches."""
-    reach = network_reaches.loc[network_reaches["ID"] == int(network_id), :]
-    to_reach = network_reaches.loc[network_reaches["ID"] == int(reach["to_id"].iloc[0]), :]
+    reach = network_reaches.loc[network_reaches[NETWORK_ID_COL] == int(network_id), :]
+    to_reach = network_reaches.loc[network_reaches[NETWORK_ID_COL] == int(reach[NETWORK_TO_ID_COL].iloc[0]), :]
 
     if to_reach.empty:
         return linemerge(reach.geometry.iloc[0])
     else:
-        next_to_reach = network_reaches.loc[network_reaches["ID"] == int(to_reach["to_id"].iloc[0]), :]
+        next_to_reach = network_reaches.loc[network_reaches[NETWORK_ID_COL] == int(to_reach[NETWORK_TO_ID_COL].iloc[0]), :]
         if next_to_reach.empty:
             return linemerge(MultiLineString([linemerge(reach.geometry.iloc[0]), linemerge(to_reach.geometry.iloc[0])]))
         else:

@@ -81,3 +81,7 @@ for k in keys:
     TERRAIN_AGREEMENT_PRECISION[f"max_el_residuals_{k}"] = TERRAIN_AGREEMENT_PRECISION[k]
 
 DEFAULT_MAX_WALK = 3e4
+
+# hydrofabric network columns
+NETWORK_ID_COL = "fp_id"
+NETWORK_TO_ID_COL = "fp_to_id"
