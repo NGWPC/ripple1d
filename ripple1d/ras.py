@@ -7,8 +7,6 @@ import os
 import platform
 import re
 import subprocess
-import time
-import warnings
 from functools import lru_cache
 from pathlib import Path
 from typing import List
@@ -20,8 +18,8 @@ import pandas as pd
 from pyproj import CRS
 
 from ripple1d.consts import (
+    DEFAULT_ND_SLOPE,
     FLOW_HDF_PATH,
-    NORMAL_DEPTH,
     PROFILE_NAMES_HDF_PATH,
     SHOW_RAS,
     SUPPORTED_LAYERS,
@@ -40,20 +38,14 @@ from ripple1d.errors import (
     NoGeometryFileSpecifiedError,
     NoRiverLayerError,
     PlanTitleAlreadyExistsError,
-    RASComputeTimeoutError,
 )
 
 # ToManyPlansError,
 from ripple1d.rasmap import PLAN, RASMAP_631, TERRAIN
 from ripple1d.utils.dg_utils import get_terrain_exe_path
 from ripple1d.utils.ripple_utils import (
-    assert_no_mesh_error,
-    assert_no_ras_compute_error_message,
-    assert_no_ras_geometry_error,
-    assert_no_store_all_maps_error_message,
     decode,
     replace_line_in_contents,
-    resample_vertices,
     search_contents,
     text_block_from_start_end_str,
 )
@@ -224,9 +216,9 @@ class RasManager:
         geom_title: str,
         flow_change_locations: list[FlowChangeLocation],
         profile_names: list[str],
-        normal_depth: float = NORMAL_DEPTH,
+        normal_depth: float = DEFAULT_ND_SLOPE,
         write_depth_grids: bool = False,
-        show_ras: bool = False,
+        show_ras: bool = SHOW_RAS,
         run_ras: bool = True,
         flow_file_description: str = "",
     ):
@@ -275,7 +267,7 @@ class RasManager:
         reach: str,
         us_river_station: float,
         write_depth_grids: bool = False,
-        show_ras: bool = False,
+        show_ras: bool = SHOW_RAS,
         run_ras: bool = True,
     ):
         """Create a new known water surface elevation run."""
@@ -357,7 +349,7 @@ class RasManager:
     @check_windows
     @check_version_installed("631")
     def write_new_plan_text_file(
-        self, plan_flow_title, geom_title, write_depth_grids: bool = False, show_ras=False, run_ras=True
+        self, plan_flow_title, geom_title, write_depth_grids: bool = False, show_ras=SHOW_RAS, run_ras=True
     ):
         """Write new plan text file decorator."""
         if plan_flow_title in self.plans.keys():
@@ -471,7 +463,7 @@ class RasProject(RasTextFile):
         super().__init__(ras_text_file_path, new_file)
 
         if self.file_extension != ".prj":
-            raise TypeError(f"Project extenstion must be .prj, not {self.file_extension}")
+            raise TypeError(f"Project extension must be .prj, not {self.file_extension}")
 
         self._ras_project_basename = os.path.splitext(os.path.basename(self._ras_text_file_path))[0]
         self._ras_dir = os.path.dirname(self._ras_text_file_path)
@@ -560,7 +552,7 @@ class RasProject(RasTextFile):
         """
         new_contents = self.contents
         if f"{plan_ext}" not in VALID_PLANS:
-            raise TypeError(f"Plan extenstion must be one of .p01-.p99, not {plan_ext}")
+            raise TypeError(f"Plan extension must be one of .p01-.p99, not {plan_ext}")
         else:
             new_contents = replace_line_in_contents(new_contents, "Current Plan", plan_ext.lstrip("."))
 
@@ -577,7 +569,7 @@ class RasPlanText(RasTextFile):
     def __init__(self, ras_text_file_path: str, crs: str = None, new_file: bool = False, units: str = "English"):
         super().__init__(ras_text_file_path, new_file)
         if self.file_extension not in VALID_PLANS:
-            raise TypeError(f"Plan extenstion must be one of .p01-.p99, not {self.file_extension}")
+            raise TypeError(f"Plan extension must be one of .p01-.p99, not {self.file_extension}")
         self.crs = crs
         self.hdf_file = self._ras_text_file_path + ".hdf"
         self.units = units
@@ -645,7 +637,7 @@ class RasPlanText(RasTextFile):
         if "u" in extension:
             return f".{search_contents(self.contents, 'Flow File')}"
         else:
-            raise ValueError(f"Expected an unsteady flow extension (.uxx). Recieved: {extension}")
+            raise ValueError(f"Expected an unsteady flow extension (.uxx). Received: {extension}")
 
     @property
     def plan_steady_extension(self):
@@ -686,12 +678,12 @@ class RasPlanText(RasTextFile):
             new_contents = replace_line_in_contents(new_contents, "Short Identifier", short_id)
 
         if f".{geom_ext}" not in VALID_GEOMS:
-            raise TypeError(f"Geometry extenstion must be one of g01-g99, not {geom_ext}")
+            raise TypeError(f"Geometry extension must be one of g01-g99, not {geom_ext}")
         else:
             new_contents = replace_line_in_contents(new_contents, "Geom File", geom_ext)
 
         if f".{flow_ext}" not in VALID_STEADY_FLOWS:
-            raise TypeError(f"Flow extenstion must be one of f01-f99, not {flow_ext}")
+            raise TypeError(f"Flow extension must be one of f01-f99, not {flow_ext}")
         else:
             new_contents = replace_line_in_contents(new_contents, "Flow File", flow_ext)
 
@@ -724,12 +716,12 @@ class RasPlanText(RasTextFile):
             self.contents.append(f"Short Identifier={short_id}")
 
         if f"{geom.file_extension}" not in VALID_GEOMS:
-            raise TypeError(f"Geometry extenstion must be one of .g01-.g99, not {geom.file_extension}")
+            raise TypeError(f"Geometry extension must be one of .g01-.g99, not {geom.file_extension}")
         else:
             self.contents.append(f"Geom File={geom.file_extension.lstrip('.')}")
 
         if f"{flow.file_extension}" not in VALID_STEADY_FLOWS:
-            raise TypeError(f"Flow extenstion must be one of .f01-.f99, not {flow.file_extension}")
+            raise TypeError(f"Flow extension must be one of .f01-.f99, not {flow.file_extension}")
         else:
             self.contents.append(f"Flow File={flow.file_extension.lstrip('.')}")
         if run_rasmapper:
@@ -785,7 +777,7 @@ class RasGeomText(RasTextFile):
     def __init__(self, ras_text_file_path: str, crs: str = None, new_file=False, units: str = "English"):
         super().__init__(ras_text_file_path, new_file)
         if not new_file and self.file_extension not in VALID_GEOMS:
-            raise TypeError(f"Geometry extenstion must be one of .g01-.g99, not {self.file_extension}")
+            raise TypeError(f"Geometry extension must be one of .g01-.g99, not {self.file_extension}")
 
         self.crs = CRS(crs)
         self.units = units
@@ -1148,7 +1140,7 @@ class RasFlowText(RasTextFile):
             raise NotImplementedError("only steady flow (.f**) supported")
 
         if self.file_extension not in VALID_STEADY_FLOWS:
-            raise TypeError(f"Flow extenstion must be one of .f01-.f99, not {self.file_extension}")
+            raise TypeError(f"Flow extension must be one of .f01-.f99, not {self.file_extension}")
 
     def __repr__(self):
         """Representation of the RasFlowText class."""
@@ -1315,7 +1307,7 @@ class RasUnsteadyText(RasTextFile):
             raise NotImplementedError("only steady flow (.u**) supported")
 
         if self.file_extension not in VALID_UNSTEADY_FLOWS:
-            raise TypeError(f"Flow extenstion must be one of .u01-.u99, not {self.file_extension}")
+            raise TypeError(f"Flow extension must be one of .u01-.u99, not {self.file_extension}")
 
     def __repr__(self):
         """Representation of the RasUnsteadyText class."""
@@ -1345,7 +1337,7 @@ class RasMap:
 
     Attributes
     ----------
-    text_file : Text file repressenting the RAS Mapper file
+    text_file : Text file representing the RAS Mapper file
     contents : a text representation of the files contents
     version : HEC-RAS version for this RAS Mapper file
 

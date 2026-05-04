@@ -19,7 +19,8 @@
             "low_flow": 313116,
             "high_flow": 2271710,
             "network_to_id": "5096814",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0016899999463930726,
+            "ds_slope_source_nwm_id": "5096814",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -80,7 +81,8 @@
             "low_flow": 313137,
             "high_flow": 2271658,
             "network_to_id": "5092604",
-            "ds_slope": 5.999999848427251e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092614",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -143,7 +145,8 @@
             "low_flow": 311964,
             "high_flow": 2262053,
             "network_to_id": "5092598",
-            "ds_slope": 0.00011999999696854502,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "5092598",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -204,7 +207,8 @@
             "low_flow": 311945,
             "high_flow": 2261930,
             "network_to_id": "5092748",
-            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092748",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -265,7 +269,8 @@
             "low_flow": 311964,
             "high_flow": 2262109,
             "network_to_id": "5092594",
-            "ds_slope": 0.0008099999977275729,
+            "ds_slope": 0.00011999999696854502,
+            "ds_slope_source_nwm_id": "5092594",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -326,7 +331,8 @@
             "low_flow": 311953,
             "high_flow": 2262028,
             "network_to_id": "5092590",
-            "ds_slope": 9.000000136438757e-05,
+            "ds_slope": 0.0008099999977275729,
+            "ds_slope_source_nwm_id": "5092590",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -387,7 +393,8 @@
             "low_flow": 312044,
             "high_flow": 2263096,
             "network_to_id": "5092586",
-            "ds_slope": 2.9999999242136255e-05,
+            "ds_slope": 9.000000136438757e-05,
+            "ds_slope_source_nwm_id": "5092586",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -449,6 +456,7 @@
             "high_flow": 2263113,
             "network_to_id": "5092562",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092562",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -509,7 +517,8 @@
             "low_flow": 312049,
             "high_flow": 2262999,
             "network_to_id": "5092552",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092552",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -570,7 +579,8 @@
             "low_flow": 312055,
             "high_flow": 2263142,
             "network_to_id": "5092542",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "5092542",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -631,7 +641,8 @@
             "low_flow": 312054,
             "high_flow": 2263096,
             "network_to_id": "5090014",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00013000000035390258,
+            "ds_slope_source_nwm_id": "5090014",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -693,6 +704,7 @@
             "high_flow": 2263132,
             "network_to_id": "5090010",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5090010",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -753,7 +765,8 @@
             "low_flow": 312063,
             "high_flow": 2263172,
             "network_to_id": "5090004",
-            "ds_slope": 0.000539999979082495,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5090004",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -814,7 +827,8 @@
             "low_flow": 312063,
             "high_flow": 2263144,
             "network_to_id": "5090000",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.000539999979082495,
+            "ds_slope_source_nwm_id": "5090000",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -875,7 +889,8 @@
             "low_flow": 311261,
             "high_flow": 2276430,
             "network_to_id": "5089986",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0002500000118743628,
+            "ds_slope_source_nwm_id": "5089986",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -936,7 +951,8 @@
             "low_flow": 311267,
             "high_flow": 2276412,
             "network_to_id": "5089984",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089984",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -997,7 +1013,8 @@
             "low_flow": 313129,
             "high_flow": 2272768,
             "network_to_id": "5092712",
-            "ds_slope": 0.0001500000071246177,
+            "ds_slope": 0.00016999999934341758,
+            "ds_slope_source_nwm_id": "5092712",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1058,7 +1075,8 @@
             "low_flow": 313132,
             "high_flow": 2272717,
             "network_to_id": "5092698",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 0.0001500000071246177,
+            "ds_slope_source_nwm_id": "5092698",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1120,6 +1138,7 @@
             "high_flow": 2273497,
             "network_to_id": "5092646",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092646",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1181,6 +1200,7 @@
             "high_flow": 2273521,
             "network_to_id": "5092634",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092634",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1241,7 +1261,8 @@
             "low_flow": 311298,
             "high_flow": 2277330,
             "network_to_id": "5096766",
-            "ds_slope": 0.00026000000070780516,
+            "ds_slope": 4.999999873689376e-05,
+            "ds_slope_source_nwm_id": "5096766",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1302,7 +1323,8 @@
             "low_flow": 311308,
             "high_flow": 2277306,
             "network_to_id": "5089952",
-            "ds_slope": 4.999999873689376e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089952",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1364,6 +1386,7 @@
             "high_flow": 2277231,
             "network_to_id": "5089960",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089970",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1426,7 +1449,8 @@
             "low_flow": 312059,
             "high_flow": 2263257,
             "network_to_id": "5092566",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0002099999983329326,
+            "ds_slope_source_nwm_id": "5092566",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1487,7 +1511,8 @@
             "low_flow": 313362,
             "high_flow": 2273460,
             "network_to_id": "5092616",
-            "ds_slope": 0.0016899999463930726,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092616",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1548,7 +1573,8 @@
             "low_flow": 311960,
             "high_flow": 2262203,
             "network_to_id": "5092602",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 5.999999848427251e-05,
+            "ds_slope_source_nwm_id": "5092606",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1611,7 +1637,8 @@
             "low_flow": 312059,
             "high_flow": 2263257,
             "network_to_id": "5092568",
-            "ds_slope": 0.0002099999983329326,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092568",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1672,7 +1699,8 @@
             "low_flow": 312059,
             "high_flow": 2263204,
             "network_to_id": "5092572",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00014000000373926014,
+            "ds_slope_source_nwm_id": "5092572",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1733,7 +1761,8 @@
             "low_flow": 312048,
             "high_flow": 2263183,
             "network_to_id": "5092582",
-            "ds_slope": 0.00014000000373926014,
+            "ds_slope": 2.9999999242136255e-05,
+            "ds_slope_source_nwm_id": "5092582",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1794,7 +1823,8 @@
             "low_flow": 311263,
             "high_flow": 2276431,
             "network_to_id": "5089990",
-            "ds_slope": 0.0002500000118743628,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089998",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1857,7 +1887,8 @@
             "low_flow": 311296,
             "high_flow": 2277122,
             "network_to_id": "5089978",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "5089978",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1919,6 +1950,7 @@
             "high_flow": 2277464,
             "network_to_id": "5089932",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089938",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -1981,7 +2013,8 @@
             "low_flow": 311295,
             "high_flow": 2277301,
             "network_to_id": "5089946",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00026000000070780516,
+            "ds_slope_source_nwm_id": "5089946",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2042,7 +2075,8 @@
             "low_flow": 313251,
             "high_flow": 2273215,
             "network_to_id": "5092652",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "5092676",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2106,6 +2140,7 @@
             "high_flow": 2273522,
             "network_to_id": "5092626",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092630",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2168,9 +2203,10 @@
             "low_flow": 313362,
             "high_flow": 2273502,
             "network_to_id": "5092622",
-            "ds_slope": 9.999999747378752e-06,
             "gage": "07022000",
             "gage_url": "https://waterdata.usgs.gov/nwis/uv?site_no=07022000&legacy=1",
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092622",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2232,6 +2268,7 @@
             "high_flow": 2242929,
             "network_to_id": "5093440",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5093440",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2293,6 +2330,7 @@
             "high_flow": 2242849,
             "network_to_id": "5093450",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5093450",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2353,7 +2391,8 @@
             "low_flow": 313358,
             "high_flow": 2243140,
             "network_to_id": "5092686",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00016999999934341758,
+            "ds_slope_source_nwm_id": "5092686",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2414,7 +2453,8 @@
             "low_flow": 313346,
             "high_flow": 2242953,
             "network_to_id": "5092702",
-            "ds_slope": 7.000000186963007e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092702",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2475,7 +2515,8 @@
             "low_flow": 313356,
             "high_flow": 2243136,
             "network_to_id": "5092696",
-            "ds_slope": 0.00016999999934341758,
+            "ds_slope": 7.000000186963007e-05,
+            "ds_slope_source_nwm_id": "5092696",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2537,6 +2578,7 @@
             "high_flow": 2243004,
             "network_to_id": "5092706",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092706",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2597,7 +2639,8 @@
             "low_flow": 313372,
             "high_flow": 2243130,
             "network_to_id": "5092674",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092674",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2658,7 +2701,8 @@
             "low_flow": 313007,
             "high_flow": 2272449,
             "network_to_id": "5092660",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "5092660",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2720,6 +2764,7 @@
             "high_flow": 2242718,
             "network_to_id": "5093446",
             "ds_slope": 0.00033000000985339284,
+            "ds_slope_source_nwm_id": "5093448",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2775,7 +2820,8 @@
             "low_flow": 313008,
             "high_flow": 2272411,
             "network_to_id": "5092656",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "5092656",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2836,7 +2882,8 @@
             "low_flow": 313062,
             "high_flow": 2272490,
             "network_to_id": "5092710",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00016999999934341758,
+            "ds_slope_source_nwm_id": "5092704",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2899,7 +2946,8 @@
             "low_flow": 313109,
             "high_flow": 2272707,
             "network_to_id": "5093444",
-            "ds_slope": 0.00016999999934341758,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5093444",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -2960,7 +3008,8 @@
             "low_flow": 313045,
             "high_flow": 2272440,
             "network_to_id": "5092684",
-            "ds_slope": 0.00016999999934341758,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092684",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3021,7 +3070,8 @@
             "low_flow": 313038,
             "high_flow": 2272582,
             "network_to_id": "5092658",
-            "ds_slope": 0.0002800000074785203,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5092658",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3082,7 +3132,8 @@
             "low_flow": 313040,
             "high_flow": 2272558,
             "network_to_id": "5092664",
-            "ds_slope": 0.00023999999393709004,
+            "ds_slope": 0.0002800000074785203,
+            "ds_slope_source_nwm_id": "5092664",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3143,7 +3194,8 @@
             "low_flow": 313040,
             "high_flow": 2272524,
             "network_to_id": "5092670",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00023999999393709004,
+            "ds_slope_source_nwm_id": "5092670",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3204,7 +3256,8 @@
             "low_flow": 313307,
             "high_flow": 2242809,
             "network_to_id": "5093448",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00033000000985339284,
+            "ds_slope_source_nwm_id": "5093448",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3266,6 +3319,7 @@
             "high_flow": 2277489,
             "network_to_id": "5089926",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089926",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3326,7 +3380,8 @@
             "low_flow": 311305,
             "high_flow": 2277445,
             "network_to_id": "5089922",
-            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5089922",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3387,7 +3442,8 @@
             "low_flow": 311248,
             "high_flow": 2277381,
             "network_to_id": "5089920",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "5089920",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3448,7 +3504,8 @@
             "low_flow": 311249,
             "high_flow": 2277484,
             "network_to_id": "5089914",
-            "ds_slope": 0.00011000000085914508,
+            "ds_slope": 0.00013000000035390258,
+            "ds_slope_source_nwm_id": "5089914",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3509,9 +3566,10 @@
             "low_flow": 311293,
             "high_flow": 2277393,
             "network_to_id": "5089912",
-            "ds_slope": 0.00011999999696854502,
             "gage": "07020500",
             "gage_url": "https://waterdata.usgs.gov/nwis/uv?site_no=07020500&legacy=1",
+            "ds_slope": 0.00011000000085914508,
+            "ds_slope_source_nwm_id": "5089912",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3572,7 +3630,8 @@
             "low_flow": 311017,
             "high_flow": 2275401,
             "network_to_id": "5089904",
-            "ds_slope": 4.999999873689376e-05,
+            "ds_slope": 0.00011999999696854502,
+            "ds_slope_source_nwm_id": "5089904",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3633,7 +3692,8 @@
             "low_flow": 742,
             "high_flow": 51750,
             "network_to_id": "5089894",
-            "ds_slope": 0.0001500000071246177,
+            "ds_slope": 0.0007999999797903001,
+            "ds_slope_source_nwm_id": "5089892",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3689,7 +3749,8 @@
             "low_flow": 307951,
             "high_flow": 2273230,
             "network_to_id": "3630829",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0002500000118743628,
+            "ds_slope_source_nwm_id": "3630829",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3750,7 +3811,8 @@
             "low_flow": 307963,
             "high_flow": 2273017,
             "network_to_id": "5090052",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5090052",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3811,7 +3873,8 @@
             "low_flow": 307965,
             "high_flow": 2273343,
             "network_to_id": "3629943",
-            "ds_slope": 0.0002500000118743628,
+            "ds_slope": 0.00013000000035390258,
+            "ds_slope_source_nwm_id": "3629943",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3872,7 +3935,8 @@
             "low_flow": 307966,
             "high_flow": 2273110,
             "network_to_id": "5089872",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0004400000034365803,
+            "ds_slope_source_nwm_id": "5089868",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3935,7 +3999,8 @@
             "low_flow": 311105,
             "high_flow": 2277346,
             "network_to_id": "5089890",
-            "ds_slope": 0.00018000000272877514,
+            "ds_slope": 4.999999873689376e-05,
+            "ds_slope_source_nwm_id": "5089890",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -3997,6 +4062,7 @@
             "high_flow": 14237,
             "network_to_id": "5088488",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5088524",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4059,7 +4125,8 @@
             "low_flow": 311106,
             "high_flow": 2277533,
             "network_to_id": "5089870",
-            "ds_slope": 0.0004400000034365803,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "5089880",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4122,7 +4189,8 @@
             "low_flow": 311104,
             "high_flow": 2277402,
             "network_to_id": "5089888",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 0.00018000000272877514,
+            "ds_slope_source_nwm_id": "5089888",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4183,7 +4251,8 @@
             "low_flow": 739,
             "high_flow": 52886,
             "network_to_id": "5088542",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0001500000071246177,
+            "ds_slope_source_nwm_id": "5088542",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4245,6 +4314,7 @@
             "high_flow": 13680,
             "network_to_id": "5088536",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "5088536",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4305,7 +4375,8 @@
             "low_flow": 307951,
             "high_flow": 2273138,
             "network_to_id": "3630825",
-            "ds_slope": 0.0003499999875202775,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3630825",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4366,7 +4437,8 @@
             "low_flow": 307941,
             "high_flow": 2273201,
             "network_to_id": "3630817",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0003499999875202775,
+            "ds_slope_source_nwm_id": "3630823",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4430,6 +4502,7 @@
             "high_flow": 2273327,
             "network_to_id": "3629267",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629267",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4490,7 +4563,8 @@
             "low_flow": 307947,
             "high_flow": 2273524,
             "network_to_id": "3629263",
-            "ds_slope": 0.00015999999595806003,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629263",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4551,7 +4625,8 @@
             "low_flow": 307836,
             "high_flow": 2272965,
             "network_to_id": "3629241",
-            "ds_slope": 0.00031999999191612005,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629241",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4612,7 +4687,8 @@
             "low_flow": 304675,
             "high_flow": 2328624,
             "network_to_id": "3624735",
-            "ds_slope": 0.000539999979082495,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "3624735",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4674,6 +4750,7 @@
             "high_flow": 2329706,
             "network_to_id": "3624709",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624709",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4735,6 +4812,7 @@
             "high_flow": 2328865,
             "network_to_id": "3634823",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3634823",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4795,7 +4873,8 @@
             "low_flow": 304642,
             "high_flow": 2328491,
             "network_to_id": "3624727",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.000539999979082495,
+            "ds_slope_source_nwm_id": "3624727",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4856,7 +4935,8 @@
             "low_flow": 307819,
             "high_flow": 2273066,
             "network_to_id": "3629227",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00031999999191612005,
+            "ds_slope_source_nwm_id": "3629237",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4919,7 +4999,8 @@
             "low_flow": 307944,
             "high_flow": 2273549,
             "network_to_id": "3629257",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00015999999595806003,
+            "ds_slope_source_nwm_id": "3629257",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -4981,6 +5062,7 @@
             "high_flow": 2273029,
             "network_to_id": "3629247",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629247",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5042,6 +5124,7 @@
             "high_flow": 2273281,
             "network_to_id": "3629221",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629221",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5103,6 +5186,7 @@
             "high_flow": 2273155,
             "network_to_id": "3629229",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629229",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5164,6 +5248,7 @@
             "high_flow": 2329497,
             "network_to_id": "3624715",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624715",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5225,6 +5310,7 @@
             "high_flow": 2329474,
             "network_to_id": "3634869",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3634869",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5286,6 +5372,7 @@
             "high_flow": 2329541,
             "network_to_id": "3624711",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624711",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5346,7 +5433,8 @@
             "low_flow": 307826,
             "high_flow": 2273330,
             "network_to_id": "3629217",
-            "ds_slope": 0.00014000000373926014,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629217",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5407,7 +5495,8 @@
             "low_flow": 307824,
             "high_flow": 2273347,
             "network_to_id": "3629209",
-            "ds_slope": 0.002589999930933118,
+            "ds_slope": 0.00014000000373926014,
+            "ds_slope_source_nwm_id": "3629213",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5470,7 +5559,8 @@
             "low_flow": 307775,
             "high_flow": 2272877,
             "network_to_id": "3629203",
-            "ds_slope": 0.00046999999904073775,
+            "ds_slope": 0.002589999930933118,
+            "ds_slope_source_nwm_id": "3629205",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5534,6 +5624,7 @@
             "high_flow": 2274158,
             "network_to_id": "3629163",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629163",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5594,7 +5685,8 @@
             "low_flow": 307799,
             "high_flow": 2274370,
             "network_to_id": "3629159",
-            "ds_slope": 5.999999848427251e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629159",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5655,7 +5747,8 @@
             "low_flow": 307771,
             "high_flow": 2274912,
             "network_to_id": "3629147",
-            "ds_slope": 0.00031999999191612005,
+            "ds_slope": 0.0003000000142492354,
+            "ds_slope_source_nwm_id": "3629147",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5716,7 +5809,8 @@
             "low_flow": 307769,
             "high_flow": 2274690,
             "network_to_id": "3629155",
-            "ds_slope": 0.0003000000142492354,
+            "ds_slope": 5.999999848427251e-05,
+            "ds_slope_source_nwm_id": "3629155",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5777,7 +5871,8 @@
             "low_flow": 307702,
             "high_flow": 2275597,
             "network_to_id": "3629135",
-            "ds_slope": 9.000000136438757e-05,
+            "ds_slope": 0.00031999999191612005,
+            "ds_slope_source_nwm_id": "3629135",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5838,7 +5933,8 @@
             "low_flow": 307709,
             "high_flow": 2275642,
             "network_to_id": "3629127",
-            "ds_slope": 9.999999747378752e-05,
+            "ds_slope": 9.000000136438757e-05,
+            "ds_slope_source_nwm_id": "3629127",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5899,7 +5995,8 @@
             "low_flow": 307711,
             "high_flow": 2275912,
             "network_to_id": "3629119",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 9.999999747378752e-05,
+            "ds_slope_source_nwm_id": "3629119",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -5961,6 +6058,7 @@
             "high_flow": 2275514,
             "network_to_id": "3629097",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629097",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6021,7 +6119,8 @@
             "low_flow": 307695,
             "high_flow": 2275714,
             "network_to_id": "3629089",
-            "ds_slope": 7.000000186963007e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629089",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6082,7 +6181,8 @@
             "low_flow": 307696,
             "high_flow": 2276284,
             "network_to_id": "3629077",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 7.000000186963007e-05,
+            "ds_slope_source_nwm_id": "3629083",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6145,7 +6245,8 @@
             "low_flow": 305043,
             "high_flow": 2322995,
             "network_to_id": "3629071",
-            "ds_slope": 0.00022000000171829015,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "3629071",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6206,7 +6307,8 @@
             "low_flow": 305028,
             "high_flow": 2322643,
             "network_to_id": "3629073",
-            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "3629073",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6267,7 +6369,8 @@
             "low_flow": 305038,
             "high_flow": 2323267,
             "network_to_id": "3629067",
-            "ds_slope": 4.999999873689376e-05,
+            "ds_slope": 0.00022000000171829015,
+            "ds_slope_source_nwm_id": "3629067",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6328,7 +6431,8 @@
             "low_flow": 305017,
             "high_flow": 2323555,
             "network_to_id": "3629053",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0012199999764561653,
+            "ds_slope_source_nwm_id": "3629053",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6389,7 +6493,8 @@
             "low_flow": 305019,
             "high_flow": 2323533,
             "network_to_id": "3629059",
-            "ds_slope": 0.0001900000061141327,
+            "ds_slope": 0.00013000000035390258,
+            "ds_slope_source_nwm_id": "3629059",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6450,7 +6555,8 @@
             "low_flow": 305018,
             "high_flow": 2323565,
             "network_to_id": "3629055",
-            "ds_slope": 0.0012199999764561653,
+            "ds_slope": 0.0001900000061141327,
+            "ds_slope_source_nwm_id": "3629055",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6511,7 +6617,8 @@
             "low_flow": 305035,
             "high_flow": 2323477,
             "network_to_id": "3629065",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 4.999999873689376e-05,
+            "ds_slope_source_nwm_id": "3629065",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6573,6 +6680,7 @@
             "high_flow": 2323658,
             "network_to_id": "3624747",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624747",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6634,6 +6742,7 @@
             "high_flow": 2323007,
             "network_to_id": "3624745",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624745",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6694,9 +6803,10 @@
             "low_flow": 304635,
             "high_flow": 2322873,
             "network_to_id": "3624739",
-            "ds_slope": 1.9999999494757503e-05,
             "gage": "07010000",
             "gage_url": "https://waterdata.usgs.gov/nwis/uv?site_no=07010000&legacy=1",
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624739",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6757,7 +6867,8 @@
             "low_flow": 307746,
             "high_flow": 2272802,
             "network_to_id": "3629191",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00046999999904073775,
+            "ds_slope_source_nwm_id": "3629197",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6821,6 +6932,7 @@
             "high_flow": 2272963,
             "network_to_id": "3629319",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629187",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6879,7 +6991,8 @@
             "low_flow": 307759,
             "high_flow": 2273211,
             "network_to_id": "3629181",
-            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3629181",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -6940,7 +7053,8 @@
             "low_flow": 307795,
             "high_flow": 2274180,
             "network_to_id": "3629173",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "3629173",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7002,6 +7116,7 @@
             "high_flow": 2328784,
             "network_to_id": "3624723",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624723",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7062,7 +7177,8 @@
             "low_flow": 128524,
             "high_flow": 927042,
             "network_to_id": "2927571",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0003000000142492354,
+            "ds_slope_source_nwm_id": "2927581",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7126,6 +7242,7 @@
             "high_flow": 926809,
             "network_to_id": "2927819",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927819",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7187,6 +7304,7 @@
             "high_flow": 926922,
             "network_to_id": "2927699",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927699",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7248,6 +7366,7 @@
             "high_flow": 926921,
             "network_to_id": "2927711",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927597",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7311,6 +7430,7 @@
             "high_flow": 926885,
             "network_to_id": "2927601",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927601",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7372,6 +7492,7 @@
             "high_flow": 926800,
             "network_to_id": "2927691",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927691",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7433,6 +7554,7 @@
             "high_flow": 926786,
             "network_to_id": "2927611",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927611",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7494,6 +7616,7 @@
             "high_flow": 926968,
             "network_to_id": "2927727",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927713",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7557,6 +7680,7 @@
             "high_flow": 926863,
             "network_to_id": "2927697",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927689",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7619,7 +7743,8 @@
             "low_flow": 128524,
             "high_flow": 926995,
             "network_to_id": "2927589",
-            "ds_slope": 0.0003000000142492354,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927589",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7680,7 +7805,8 @@
             "low_flow": 129121,
             "high_flow": 940686,
             "network_to_id": "2930505",
-            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930505",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7742,6 +7868,7 @@
             "high_flow": 940676,
             "network_to_id": "2931037",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2931037",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7802,7 +7929,8 @@
             "low_flow": 129118,
             "high_flow": 940777,
             "network_to_id": "2932183",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1.9999999494757503e-05,
+            "ds_slope_source_nwm_id": "2932183",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7864,6 +7992,7 @@
             "high_flow": 940826,
             "network_to_id": "2932177",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932177",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7925,6 +8054,7 @@
             "high_flow": 926721,
             "network_to_id": "2932155",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932155",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -7986,6 +8116,7 @@
             "high_flow": 926724,
             "network_to_id": "2932159",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932159",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8047,6 +8178,7 @@
             "high_flow": 926740,
             "network_to_id": "2927615",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927615",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8108,6 +8240,7 @@
             "high_flow": 926741,
             "network_to_id": "2927647",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927647",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8169,6 +8302,7 @@
             "high_flow": 926773,
             "network_to_id": "2927613",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927667",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8232,6 +8366,7 @@
             "high_flow": 926740,
             "network_to_id": "2927645",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2927645",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8293,6 +8428,7 @@
             "high_flow": 940661,
             "network_to_id": "2930867",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930867",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8354,6 +8490,7 @@
             "high_flow": 926706,
             "network_to_id": "2932231",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932165",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8417,6 +8554,7 @@
             "high_flow": 926700,
             "network_to_id": "2932173",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932173",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8478,6 +8616,7 @@
             "high_flow": 926728,
             "network_to_id": "2932209",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932171",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8540,7 +8679,8 @@
             "low_flow": 129117,
             "high_flow": 940555,
             "network_to_id": "2931035",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0005000000237487257,
+            "ds_slope_source_nwm_id": "2931035",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8602,6 +8742,7 @@
             "high_flow": 940627,
             "network_to_id": "2930871",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930871",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8663,6 +8804,7 @@
             "high_flow": 940575,
             "network_to_id": "2930531",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930531",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8723,7 +8865,8 @@
             "low_flow": 129120,
             "high_flow": 940500,
             "network_to_id": "2930553",
-            "ds_slope": 0.0006200000061653554,
+            "ds_slope": 0.003710000077262521,
+            "ds_slope_source_nwm_id": "2930553",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8784,7 +8927,8 @@
             "low_flow": 129120,
             "high_flow": 940500,
             "network_to_id": "2930557",
-            "ds_slope": 0.003710000077262521,
+            "ds_slope": 0.0013200000394135714,
+            "ds_slope_source_nwm_id": "2930557",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8845,7 +8989,8 @@
             "low_flow": 129120,
             "high_flow": 940501,
             "network_to_id": "2931045",
-            "ds_slope": 0.0013200000394135714,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2931045",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8907,6 +9052,7 @@
             "high_flow": 940337,
             "network_to_id": "2930907",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930909",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -8970,6 +9116,7 @@
             "high_flow": 940350,
             "network_to_id": "2930569",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930577",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9032,7 +9179,8 @@
             "low_flow": 129117,
             "high_flow": 940292,
             "network_to_id": "2930581",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 5.999999848427251e-05,
+            "ds_slope_source_nwm_id": "2930581",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9094,6 +9242,7 @@
             "high_flow": 940642,
             "network_to_id": "2930511",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930511",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9155,6 +9304,7 @@
             "high_flow": 940347,
             "network_to_id": "2930887",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2931051",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9214,6 +9364,7 @@
             "high_flow": 940394,
             "network_to_id": "2931041",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2931041",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9275,6 +9426,7 @@
             "high_flow": 940399,
             "network_to_id": "2931043",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2931043",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9336,6 +9488,7 @@
             "high_flow": 940384,
             "network_to_id": "2930889",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930905",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9399,6 +9552,7 @@
             "high_flow": 940389,
             "network_to_id": "2930559",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930559",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9459,7 +9613,8 @@
             "low_flow": 129119,
             "high_flow": 940534,
             "network_to_id": "2930543",
-            "ds_slope": 0.0005000000237487257,
+            "ds_slope": 0.0006200000061653554,
+            "ds_slope_source_nwm_id": "2930875",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9522,7 +9677,8 @@
             "low_flow": 129182,
             "high_flow": 932721,
             "network_to_id": "2932885",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0008200000156648457,
+            "ds_slope_source_nwm_id": "2932885",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9583,7 +9739,8 @@
             "low_flow": 129182,
             "high_flow": 932719,
             "network_to_id": "2932901",
-            "ds_slope": 0.0008200000156648457,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932901",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9645,6 +9802,7 @@
             "high_flow": 932742,
             "network_to_id": "2932905",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932905",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9705,7 +9863,8 @@
             "low_flow": 129183,
             "high_flow": 933393,
             "network_to_id": "2930771",
-            "ds_slope": 0.0006300000241026282,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932869",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9764,7 +9923,8 @@
             "low_flow": 129183,
             "high_flow": 933407,
             "network_to_id": "2930767",
-            "ds_slope": 0.005510000046342611,
+            "ds_slope": 0.0006300000241026282,
+            "ds_slope_source_nwm_id": "2930767",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9826,6 +9986,7 @@
             "high_flow": 933555,
             "network_to_id": "2938441",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2938445",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9888,7 +10049,8 @@
             "low_flow": 129195,
             "high_flow": 933612,
             "network_to_id": "2930603",
-            "ds_slope": 0.00039000000106170774,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930603",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -9949,7 +10111,8 @@
             "low_flow": 129174,
             "high_flow": 933800,
             "network_to_id": "2930601",
-            "ds_slope": 0.0001500000071246177,
+            "ds_slope": 0.00039000000106170774,
+            "ds_slope_source_nwm_id": "2930601",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10011,6 +10174,7 @@
             "high_flow": 933473,
             "network_to_id": "2930749",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930749",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10071,7 +10235,8 @@
             "low_flow": 129186,
             "high_flow": 933486,
             "network_to_id": "2930759",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "2930759",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10132,7 +10297,8 @@
             "low_flow": 129183,
             "high_flow": 933490,
             "network_to_id": "2930761",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 0.005510000046342611,
+            "ds_slope_source_nwm_id": "2930763",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10195,7 +10361,8 @@
             "low_flow": 129190,
             "high_flow": 933520,
             "network_to_id": "2938505",
-            "ds_slope": 5.999999848427251e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2938505",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10257,6 +10424,7 @@
             "high_flow": 933590,
             "network_to_id": "2930607",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930607",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10318,6 +10486,7 @@
             "high_flow": 932715,
             "network_to_id": "2932893",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932893",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10379,6 +10548,7 @@
             "high_flow": 932725,
             "network_to_id": "2932873",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932873",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10439,7 +10609,8 @@
             "low_flow": 129127,
             "high_flow": 939882,
             "network_to_id": "2930593",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0001500000071246177,
+            "ds_slope_source_nwm_id": "2930593",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10500,7 +10671,8 @@
             "low_flow": 129195,
             "high_flow": 933535,
             "network_to_id": "2930621",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "2930621",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10561,7 +10733,8 @@
             "low_flow": 129193,
             "high_flow": 933491,
             "network_to_id": "2930639",
-            "ds_slope": 0.0001500000071246177,
+            "ds_slope": 5.999999848427251e-05,
+            "ds_slope_source_nwm_id": "2930639",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10622,7 +10795,8 @@
             "low_flow": 129189,
             "high_flow": 933532,
             "network_to_id": "2938455",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "2930679",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10685,7 +10859,8 @@
             "low_flow": 129188,
             "high_flow": 933516,
             "network_to_id": "2930705",
-            "ds_slope": 7.999999797903001e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930705",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10746,7 +10921,8 @@
             "low_flow": 129188,
             "high_flow": 933472,
             "network_to_id": "2938477",
-            "ds_slope": 9.999999747378752e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930719",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10809,7 +10985,8 @@
             "low_flow": 129188,
             "high_flow": 933475,
             "network_to_id": "2930713",
-            "ds_slope": 0.00011999999696854502,
+            "ds_slope": 9.999999747378752e-05,
+            "ds_slope_source_nwm_id": "2930713",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10871,6 +11048,7 @@
             "high_flow": 933465,
             "network_to_id": "2931017",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930981",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10934,6 +11112,7 @@
             "high_flow": 933545,
             "network_to_id": "2930651",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930651",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -10995,6 +11174,7 @@
             "high_flow": 933531,
             "network_to_id": "2938507",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2938507",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11056,6 +11236,7 @@
             "high_flow": 933533,
             "network_to_id": "2930649",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930649",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11117,6 +11298,7 @@
             "high_flow": 932750,
             "network_to_id": "2932875",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2932881",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11180,6 +11362,7 @@
             "high_flow": 933483,
             "network_to_id": "2938485",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930723",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11242,7 +11425,8 @@
             "low_flow": 129188,
             "high_flow": 933486,
             "network_to_id": "2930709",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00011999999696854502,
+            "ds_slope_source_nwm_id": "2930709",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11303,7 +11487,8 @@
             "low_flow": 129189,
             "high_flow": 933497,
             "network_to_id": "2938461",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 7.999999797903001e-05,
+            "ds_slope_source_nwm_id": "2938461",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11364,7 +11549,8 @@
             "low_flow": 129194,
             "high_flow": 933556,
             "network_to_id": "2930625",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 0.0001500000071246177,
+            "ds_slope_source_nwm_id": "2938449",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11428,6 +11614,7 @@
             "high_flow": 939924,
             "network_to_id": "2930591",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2930591",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11488,7 +11675,8 @@
             "low_flow": 129109,
             "high_flow": 940001,
             "network_to_id": "2938437",
-            "ds_slope": 5.999999848427251e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "2938437",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11550,6 +11738,7 @@
             "high_flow": 932736,
             "network_to_id": "880776",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880776",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11611,6 +11800,7 @@
             "high_flow": 932723,
             "network_to_id": "880624",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880624",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11672,6 +11862,7 @@
             "high_flow": 932709,
             "network_to_id": "880820",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880820",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11733,6 +11924,7 @@
             "high_flow": 932736,
             "network_to_id": "880784",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880784",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11794,6 +11986,7 @@
             "high_flow": 939351,
             "network_to_id": "880548",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880548",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11855,6 +12048,7 @@
             "high_flow": 939423,
             "network_to_id": "880596",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880596",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11915,7 +12109,8 @@
             "low_flow": 129319,
             "high_flow": 939377,
             "network_to_id": "880630",
-            "ds_slope": 0.0002300000051036477,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880630",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -11976,7 +12171,8 @@
             "low_flow": 129320,
             "high_flow": 939410,
             "network_to_id": "880654",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0002300000051036477,
+            "ds_slope_source_nwm_id": "880654",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12038,6 +12234,7 @@
             "high_flow": 939387,
             "network_to_id": "880640",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880640",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12099,6 +12296,7 @@
             "high_flow": 939386,
             "network_to_id": "880662",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880662",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12160,6 +12358,7 @@
             "high_flow": 932714,
             "network_to_id": "880604",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880604",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12221,6 +12420,7 @@
             "high_flow": 932722,
             "network_to_id": "880786",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880786",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12282,6 +12482,7 @@
             "high_flow": 939396,
             "network_to_id": "880644",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880668",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12345,6 +12546,7 @@
             "high_flow": 939386,
             "network_to_id": "880818",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880818",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12406,6 +12608,7 @@
             "high_flow": 932727,
             "network_to_id": "880614",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880614",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12466,7 +12669,8 @@
             "low_flow": 184036,
             "high_flow": 1034814,
             "network_to_id": "880544",
-            "ds_slope": 7.000000186963007e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880544",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12528,6 +12732,7 @@
             "high_flow": 940855,
             "network_to_id": "880494",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880494",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12589,6 +12794,7 @@
             "high_flow": 939356,
             "network_to_id": "880534",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880534",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12650,6 +12856,7 @@
             "high_flow": 1034826,
             "network_to_id": "880486",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880486",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12711,6 +12918,7 @@
             "high_flow": 940877,
             "network_to_id": "880478",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880484",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12774,6 +12982,7 @@
             "high_flow": 1034797,
             "network_to_id": "882688",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880512",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12837,6 +13046,7 @@
             "high_flow": 940895,
             "network_to_id": "880816",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880816",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12898,6 +13108,7 @@
             "high_flow": 1035097,
             "network_to_id": "880768",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880768",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -12959,6 +13170,7 @@
             "high_flow": 1035111,
             "network_to_id": "24745881",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "24745881",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13019,7 +13231,8 @@
             "low_flow": 184039,
             "high_flow": 1034883,
             "network_to_id": "880536",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 7.000000186963007e-05,
+            "ds_slope_source_nwm_id": "880536",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13081,6 +13294,7 @@
             "high_flow": 1034786,
             "network_to_id": "882686",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "882686",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13142,6 +13356,7 @@
             "high_flow": 1034813,
             "network_to_id": "880490",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880490",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13202,7 +13417,8 @@
             "low_flow": 184074,
             "high_flow": 1023294,
             "network_to_id": "882710",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 4.999999873689376e-05,
+            "ds_slope_source_nwm_id": "882710",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13264,6 +13480,7 @@
             "high_flow": 1023228,
             "network_to_id": "880666",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880666",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13324,7 +13541,8 @@
             "low_flow": 184037,
             "high_flow": 1022793,
             "network_to_id": "880636",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.0033499998971819878,
+            "ds_slope_source_nwm_id": "880636",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13385,7 +13603,8 @@
             "low_flow": 184040,
             "high_flow": 1022921,
             "network_to_id": "880606",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope_source_nwm_id": "880606",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13446,7 +13665,8 @@
             "low_flow": 184037,
             "high_flow": 1035127,
             "network_to_id": "880814",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 0.00011999999696854502,
+            "ds_slope_source_nwm_id": "880562",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13510,6 +13730,7 @@
             "high_flow": 1035116,
             "network_to_id": "880550",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880550",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13570,7 +13791,8 @@
             "low_flow": 184070,
             "high_flow": 1023196,
             "network_to_id": "3624763",
-            "ds_slope": 2.9999999242136255e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624763",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13632,6 +13854,7 @@
             "high_flow": 1022773,
             "network_to_id": "880652",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880652",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13692,7 +13915,8 @@
             "low_flow": 184077,
             "high_flow": 1023300,
             "network_to_id": "880678",
-            "ds_slope": 4.999999873689376e-05,
+            "ds_slope": 2.9999999242136255e-05,
+            "ds_slope_source_nwm_id": "880678",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13753,7 +13977,8 @@
             "low_flow": 184037,
             "high_flow": 1022817,
             "network_to_id": "880648",
-            "ds_slope": 0.0033499998971819878,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880648",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13814,7 +14039,8 @@
             "low_flow": 184036,
             "high_flow": 1035071,
             "network_to_id": "880580",
-            "ds_slope": 0.00011999999696854502,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880580",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13876,6 +14102,7 @@
             "high_flow": 1022774,
             "network_to_id": "880622",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880622",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -13936,7 +14163,8 @@
             "low_flow": 184037,
             "high_flow": 1022838,
             "network_to_id": "880608",
-            "ds_slope": 3.9999998989515007e-05,
+            "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "880618",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -14000,6 +14228,7 @@
             "high_flow": 2330751,
             "network_to_id": "3624695",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624695",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -14061,6 +14290,7 @@
             "high_flow": 2330669,
             "network_to_id": "3624705",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624705",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -14122,6 +14352,7 @@
             "high_flow": 2330857,
             "network_to_id": "3624701",
             "ds_slope": 9.999999747378752e-06,
+            "ds_slope_source_nwm_id": "3624701",
             "metrics": {
                 "xs": {
                     "centerline_offset": {
@@ -14167,330 +14398,283 @@
             "eclipsed": true,
             "low_flow": 313141,
             "high_flow": 2271715,
-            "network_to_id": "5092614",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5092614"
         },
         "5089960": {
             "eclipsed": true,
             "low_flow": 311301,
             "high_flow": 2277256,
-            "network_to_id": "5089970",
-            "ds_slope": 0.0009800000116229057
+            "network_to_id": "5089970"
         },
         "5092602": {
             "eclipsed": true,
             "low_flow": 311974,
             "high_flow": 2262502,
-            "network_to_id": "5092606",
-            "ds_slope": 0.0003699999942909926
+            "network_to_id": "5092606"
         },
         "5089990": {
             "eclipsed": true,
             "low_flow": 312040,
             "high_flow": 2262298,
-            "network_to_id": "5089998",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5089998"
         },
         "5089932": {
             "eclipsed": true,
             "low_flow": 311302,
             "high_flow": 2277441,
-            "network_to_id": "5089938",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5089938"
         },
         "5092652": {
             "eclipsed": true,
             "low_flow": 313251,
             "high_flow": 2273185,
-            "network_to_id": "5092676",
-            "ds_slope": 0.00026000000070780516
+            "network_to_id": "5092676"
         },
         "5092626": {
             "eclipsed": true,
             "low_flow": 313347,
             "high_flow": 2273525,
-            "network_to_id": "5092630",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5092630"
         },
         "5092710": {
             "eclipsed": true,
             "low_flow": 313061,
             "high_flow": 2272557,
-            "network_to_id": "5092704",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5092704"
         },
         "5089872": {
             "eclipsed": true,
             "low_flow": 307967,
             "high_flow": 2273168,
-            "network_to_id": "5089868",
-            "ds_slope": 1.9999999494757503e-05
+            "network_to_id": "5089868"
         },
         "5088488": {
             "eclipsed": true,
             "low_flow": 270,
             "high_flow": 14138,
-            "network_to_id": "5088524",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "5088524"
         },
         "5089870": {
             "eclipsed": true,
             "low_flow": 311105,
             "high_flow": 2277490,
-            "network_to_id": "5089880",
-            "ds_slope": 3.9999998989515007e-05
+            "network_to_id": "5089880"
         },
         "3630817": {
             "eclipsed": true,
             "low_flow": 307940,
             "high_flow": 2273156,
-            "network_to_id": "3630823",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3630823"
         },
         "3629227": {
             "eclipsed": true,
             "low_flow": 307820,
             "high_flow": 2273042,
-            "network_to_id": "3629237",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3629237"
         },
         "3629209": {
             "eclipsed": true,
             "low_flow": 307826,
             "high_flow": 2273359,
-            "network_to_id": "3629213",
-            "ds_slope": 0.000590000010561198
+            "network_to_id": "3629213"
         },
         "3629203": {
             "eclipsed": true,
             "low_flow": 307775,
             "high_flow": 2272976,
-            "network_to_id": "3629205",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3629205"
         },
         "3629077": {
             "eclipsed": true,
             "low_flow": 307698,
             "high_flow": 2276287,
-            "network_to_id": "3629083",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3629083"
         },
         "3629191": {
             "eclipsed": true,
             "low_flow": 307773,
             "high_flow": 2272912,
-            "network_to_id": "3629197",
-            "ds_slope": 0.002859999891370535
+            "network_to_id": "3629197"
         },
         "3629319": {
             "eclipsed": true,
             "low_flow": 307755,
             "high_flow": 2273037,
-            "network_to_id": "3629183",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3629183"
         },
         "3629183": {
             "eclipsed": true,
             "low_flow": 307755,
             "high_flow": 2273085,
-            "network_to_id": "3629187",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "3629187"
         },
         "2927571": {
             "eclipsed": true,
             "low_flow": 128524,
             "high_flow": 927049,
-            "network_to_id": "2927581",
-            "ds_slope": 0.0038499999791383743
+            "network_to_id": "2927581"
         },
         "2927711": {
             "eclipsed": true,
             "low_flow": 128521,
             "high_flow": 926908,
-            "network_to_id": "2927597",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2927597"
         },
         "2927727": {
             "eclipsed": true,
             "low_flow": 128523,
             "high_flow": 926966,
-            "network_to_id": "2927713",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2927713"
         },
         "2927697": {
             "eclipsed": true,
             "low_flow": 128519,
             "high_flow": 926854,
-            "network_to_id": "2927689",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2927689"
         },
         "2927613": {
             "eclipsed": true,
             "low_flow": 128517,
             "high_flow": 926772,
-            "network_to_id": "2927667",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2927667"
         },
         "2932231": {
             "eclipsed": true,
             "low_flow": 128515,
             "high_flow": 926722,
-            "network_to_id": "2932165",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2932165"
         },
         "2932209": {
             "eclipsed": true,
             "low_flow": 128515,
             "high_flow": 926732,
-            "network_to_id": "2932171",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2932171"
         },
         "2930907": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940332,
-            "network_to_id": "2930909",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930909"
         },
         "2930569": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940362,
-            "network_to_id": "2930577",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930577"
         },
         "2930887": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940347,
-            "network_to_id": "2930565",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930565"
         },
         "2930565": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940365,
-            "network_to_id": "2931051",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2931051"
         },
         "2930889": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940386,
-            "network_to_id": "2930905",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930905"
         },
         "2930543": {
             "eclipsed": true,
             "low_flow": 129119,
             "high_flow": 940541,
-            "network_to_id": "2930875",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930875"
         },
         "2930771": {
             "eclipsed": true,
             "low_flow": 129184,
             "high_flow": 932743,
-            "network_to_id": "2932865",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2932865"
         },
         "2932865": {
             "eclipsed": true,
             "low_flow": 129184,
             "high_flow": 932769,
-            "network_to_id": "2932869",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2932869"
         },
         "2938441": {
             "eclipsed": true,
             "low_flow": 129195,
             "high_flow": 933511,
-            "network_to_id": "2938445",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2938445"
         },
         "2930761": {
             "eclipsed": true,
             "low_flow": 129183,
             "high_flow": 933405,
-            "network_to_id": "2930763",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930763"
         },
         "2938455": {
             "eclipsed": true,
             "low_flow": 129189,
             "high_flow": 933526,
-            "network_to_id": "2930679",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930679"
         },
         "2938477": {
             "eclipsed": true,
             "low_flow": 129188,
             "high_flow": 933480,
-            "network_to_id": "2930719",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930719"
         },
         "2931017": {
             "eclipsed": true,
             "low_flow": 129188,
             "high_flow": 933458,
-            "network_to_id": "2930981",
-            "ds_slope": 1.9999999494757503e-05
+            "network_to_id": "2930981"
         },
         "2932875": {
             "eclipsed": true,
             "low_flow": 129183,
             "high_flow": 932749,
-            "network_to_id": "2932881",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2932881"
         },
         "2938485": {
             "eclipsed": true,
             "low_flow": 129188,
             "high_flow": 933484,
-            "network_to_id": "2930723",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2930723"
         },
         "2930625": {
             "eclipsed": true,
             "low_flow": 129194,
             "high_flow": 933522,
-            "network_to_id": "2938449",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "2938449"
         },
         "880644": {
             "eclipsed": true,
             "low_flow": 129323,
             "high_flow": 939408,
-            "network_to_id": "880668",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "880668"
         },
         "880478": {
             "eclipsed": true,
             "low_flow": 184040,
             "high_flow": 1034822,
-            "network_to_id": "880484",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "880484"
         },
         "882688": {
             "eclipsed": true,
             "low_flow": 184039,
             "high_flow": 1034897,
-            "network_to_id": "880512",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "880512"
         },
         "880814": {
             "eclipsed": true,
             "low_flow": 184037,
             "high_flow": 1035119,
-            "network_to_id": "880562",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "880562"
         },
         "880608": {
             "eclipsed": true,
             "low_flow": 0,
             "high_flow": 1022836,
-            "network_to_id": "880618",
-            "ds_slope": 9.999999747378752e-06
+            "network_to_id": "880618"
         }
     },
     "metadata": {

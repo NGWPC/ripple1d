@@ -105,7 +105,7 @@ def conflate_model(
     Notes
     -----
     The spatial extents of HEC-RAS river reaches and National Water model (NWM)
-    reaches are not aligned.  The conflate_model endpoint resolves these
+    reaches are not aligned. The conflate_model endpoint resolves these
     differences by associating HEC-RAS models and model components (e.g.
     cross-sections) with the NWM reaches they overlap.
 
@@ -115,7 +115,7 @@ def conflate_model(
     #. For each HEC-RAS river reach within the source model,
       #. Locate the NWM reaches nearest to the most upstream and most
          downstream cross-sections
-      #. Extract all intermediate NWM reaches by walking   the network from
+      #. Extract all intermediate NWM reaches by walking the network from
          upstream to downstream
     #. For each NWM reach extracted,
       #. Locate the HEC-RAS cross-sections that intersect the reach
@@ -135,7 +135,7 @@ def conflate_model(
 
     Additionally, high and low flows are generated for each reach to bound the
     SRC generated in later steps. The low flow is 0.9 times the high flow
-    threshold listed for the reach in the NWM network.  The high flow is the
+    threshold listed for the reach in the NWM network. The high flow is the
     1.2 times the 100 year flow from the NWM network.
     """
     logging.info("conflate_model starting")

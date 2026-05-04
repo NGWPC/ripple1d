@@ -20,7 +20,7 @@ MINDEPTH = 0.1  # ft
 MIN_FLOW = 1  # cfs
 
 DEFAULT_EPSG = 4269
-NORMAL_DEPTH = 0.001
+DEFAULT_ND_SLOPE = 0.001
 
 STAC_API_URL = "https://stac2.dewberryanalytics.com"
 
