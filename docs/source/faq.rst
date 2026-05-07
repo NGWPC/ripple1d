@@ -57,6 +57,8 @@ Frequently Asked Questions
     the most downstream reach that intersects the submodel's final downstream cross section.
     If no such reach is found, the current reach's slope is used instead. If no slope is
     available, a default of 0.001 ft/ft is used (defined in ripple1d/consts.py as DEFAULT_ND_SLOPE).
+    The selected slope is clamped to [MIN_ND_SLOPE, MAX_ND_SLOPE] (currently [1e-6, 0.1] ft/ft,
+    defined in ripple1d/consts.py) to keep the 1D HEC-RAS steady-flow solver numerically stable.
 
 .. dropdown:: Which plan, geometry, and flow files are used?
 

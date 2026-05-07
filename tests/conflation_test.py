@@ -8,13 +8,14 @@ from shapely.geometry import LineString, MultiLineString, Point, Polygon
 
 from ripple1d.conflate.rasfim import (
     RasFimConflater,
+    _clamp_nd_slope,
     cacl_avg_nearest_points,
     count_intersecting_lines,
     endpoints_from_multiline,
     get_ds_boundary_slope,
     nearest_line_to_point,
 )
-from ripple1d.consts import DEFAULT_ND_SLOPE
+from ripple1d.consts import DEFAULT_ND_SLOPE, MAX_ND_SLOPE, MIN_ND_SLOPE
 
 TEST_DIR = os.path.dirname(__file__)
 TEST_ITEM_FILE = "ras-data/Baxter.json"
@@ -177,6 +178,46 @@ class TestRasFimConflater(unittest.TestCase):
         slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
         self.assertEqual(slope, DEFAULT_ND_SLOPE)
         self.assertIsNone(source_id)
+
+    def test_ds_boundary_slope_clamps_selected_reach_slope_below_floor(self):
+        # Selected (downstream) reach has slope 5e-7 < MIN_ND_SLOPE; expect floor
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(2, -1), (2, 1)]),
+            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 5e-7],
+            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, MIN_ND_SLOPE)
+        self.assertEqual(source_id, "2")
+
+    def test_ds_boundary_slope_clamps_selected_reach_slope_above_ceiling(self):
+        # Selected (downstream) reach has slope 0.3 > MAX_ND_SLOPE; expect ceiling
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(2, -1), (2, 1)]),
+            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 0.3],
+            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, MAX_ND_SLOPE)
+        self.assertEqual(source_id, "2")
+
+    # _clamp_nd_slope unit tests
+    def test_clamp_nd_slope_below_floor_returns_floor(self):
+        self.assertEqual(_clamp_nd_slope(5e-7), MIN_ND_SLOPE)
+
+    def test_clamp_nd_slope_above_ceiling_returns_ceiling(self):
+        self.assertEqual(_clamp_nd_slope(0.3), MAX_ND_SLOPE)
+
+    def test_clamp_nd_slope_at_exact_floor_unchanged(self):
+        self.assertEqual(_clamp_nd_slope(MIN_ND_SLOPE), MIN_ND_SLOPE)
+
+    def test_clamp_nd_slope_at_exact_ceiling_unchanged(self):
+        self.assertEqual(_clamp_nd_slope(MAX_ND_SLOPE), MAX_ND_SLOPE)
+
+    def test_clamp_nd_slope_within_bounds_unchanged(self):
+        for value in (0.005, DEFAULT_ND_SLOPE, 9.999999747378752e-06):
+            with self.subTest(value=value):
+                self.assertEqual(_clamp_nd_slope(value), value)
 
 
 # TODO: Update to remove refernce to windows User directory

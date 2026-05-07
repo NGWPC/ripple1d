@@ -16,7 +16,7 @@ from fiona.errors import DriverError
 from shapely import LineString, MultiLineString, Point, Polygon, box, reverse
 from shapely.ops import linemerge, nearest_points, transform
 
-from ripple1d.consts import DEFAULT_ND_SLOPE, METERS_PER_FOOT
+from ripple1d.consts import DEFAULT_ND_SLOPE, MAX_ND_SLOPE, METERS_PER_FOOT, MIN_ND_SLOPE
 from ripple1d.errors import BadConflation
 from ripple1d.utils.ripple_utils import (
     NWMWalker,
@@ -786,6 +786,20 @@ def _ds_xs_geometry(rfc: RasFimConflater, ras_xs_data: dict) -> LineString:
     return matches.geometry.iloc[0]
 
 
+def _clamp_nd_slope(value: float) -> float:
+    """Clamp a normal-depth slope to [MIN_ND_SLOPE, MAX_ND_SLOPE].
+
+    Logs a WARNING when the value is outside the bounds.
+    """
+    clamped = min(max(value, MIN_ND_SLOPE), MAX_ND_SLOPE)
+    if clamped != value:
+        logging.warning(
+            "Clamped ds_slope from %s to %s (bounds [%s, %s])",
+            value, clamped, MIN_ND_SLOPE, MAX_ND_SLOPE,
+        )
+    return clamped
+
+
 def _select_ds_slope_reach(
     candidates: gpd.GeoDataFrame, current_reach_id, tree_dict: dict
 ) -> Optional[pd.Series]:
@@ -823,7 +837,8 @@ def get_ds_boundary_slope(
     """Return the normal-depth slope from the NWM reach intersecting the downstream XS.
 
     Falls back to the current reach's slope, then DEFAULT_ND_SLOPE, when no
-    candidate is found on the downstream path.
+    candidate is found on the downstream path. The returned slope is clamped
+    to [MIN_ND_SLOPE, MAX_ND_SLOPE].
     """
     current_matches = rfc.nwm_reaches[rfc.nwm_reaches["ID"] == reach_id]
     current_reach_row = current_matches.iloc[0] if not current_matches.empty else None
@@ -837,7 +852,11 @@ def get_ds_boundary_slope(
         except (KeyError, TypeError, ValueError):
             pass
 
-    fallback = (current_slope, str(reach_id)) if current_slope is not None else (DEFAULT_ND_SLOPE, None)
+    fallback = (
+        (_clamp_nd_slope(current_slope), str(reach_id))
+        if current_slope is not None
+        else (_clamp_nd_slope(DEFAULT_ND_SLOPE), None)
+    )
 
     try:
         ds_xs_geom = _ds_xs_geometry(rfc, ras_xs_data)
@@ -864,7 +883,7 @@ def get_ds_boundary_slope(
     try:
         slope = float(selected["slope"])
         if np.isfinite(slope):
-            return slope, str(selected["ID"])
+            return _clamp_nd_slope(slope), str(selected["ID"])
     except (KeyError, TypeError, ValueError):
         pass
 

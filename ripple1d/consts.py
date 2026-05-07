@@ -21,6 +21,8 @@ MIN_FLOW = 1  # cfs
 
 DEFAULT_EPSG = 4269
 DEFAULT_ND_SLOPE = 0.001
+MIN_ND_SLOPE = 1e-6  # slope lower bound
+MAX_ND_SLOPE = 0.1  # slope upper bound
 
 STAC_API_URL = "https://stac2.dewberryanalytics.com"
 

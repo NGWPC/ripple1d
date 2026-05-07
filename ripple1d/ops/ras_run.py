@@ -57,7 +57,9 @@ def create_model_run_normal_depth(
     evenly spaced between the min and max discharge for the reach that were
     established by running conflate_model.  The downstream boundary condition
     for these runs are set to normal depth using the NWM reach slope for the
-    submodel's final downstream cross section (falls back to DEFAULT_ND_SLOPE if unavailable).
+    submodel's final downstream cross section (falls back to DEFAULT_ND_SLOPE if
+    unavailable). The conflation step bounds the value to
+    [MIN_ND_SLOPE, MAX_ND_SLOPE] (currently [1e-6, 0.1]).
     """
     logging.info(f"create_model_run_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
@@ -165,7 +167,8 @@ def run_incremental_normal_depth(
     interpolation. The final set of estimated discharges are then run through
     the model with a normal depth downstream boundary condition using the NWM
     reach slope for the submodel's final downstream cross section (falls back to
-    DEFAULT_ND_SLOPE if unavailable).
+    DEFAULT_ND_SLOPE if unavailable). The conflation step bounds the value to
+    [MIN_ND_SLOPE, MAX_ND_SLOPE] (currently [1e-6, 0.1]).
     """
     logging.info("run_incremental_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
