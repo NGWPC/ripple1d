@@ -58,8 +58,7 @@ def create_model_run_normal_depth(
     established by running conflate_model.  The downstream boundary condition
     for these runs are set to normal depth using the NWM reach slope for the
     submodel's final downstream cross section (falls back to DEFAULT_ND_SLOPE if
-    unavailable). The conflation step bounds the value to
-    [MIN_ND_SLOPE, MAX_ND_SLOPE].
+    unavailable). The conflation step bounds the value to [MIN_ND_SLOPE, MAX_ND_SLOPE].
     """
     logging.info(f"create_model_run_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
