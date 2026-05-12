@@ -16,7 +16,13 @@ from fiona.errors import DriverError
 from shapely import LineString, MultiLineString, Point, Polygon, box, reverse
 from shapely.ops import linemerge, nearest_points, transform
 
-from ripple1d.consts import DEFAULT_ND_SLOPE, MAX_ND_SLOPE, METERS_PER_FOOT, MIN_ND_SLOPE
+from ripple1d.consts import (
+    DEFAULT_ND_SLOPE,
+    MAX_ND_SLOPE,
+    METERS_PER_FOOT,
+    MIN_ND_SLOPE,
+    ND_SLOPE_SIG_FIGS,
+)
 from ripple1d.errors import BadConflation
 from ripple1d.utils.ripple_utils import (
     NWMWalker,
@@ -837,8 +843,9 @@ def get_ds_boundary_slope(
     """Return the normal-depth slope from the NWM reach intersecting the downstream XS.
 
     Falls back to the current reach's slope, then DEFAULT_ND_SLOPE, when no
-    candidate is found on the downstream path. The returned slope is clamped
-    to [MIN_ND_SLOPE, MAX_ND_SLOPE].
+    candidate is found on the downstream path. Returned slope is the raw
+    hydrofabric value; callers persisting it for the 1D HEC-RAS steady-flow
+    solver must clamp it via `_clamp_nd_slope`.
     """
     current_matches = rfc.nwm_reaches[rfc.nwm_reaches["ID"] == reach_id]
     current_reach_row = current_matches.iloc[0] if not current_matches.empty else None
@@ -852,11 +859,7 @@ def get_ds_boundary_slope(
         except (KeyError, TypeError, ValueError):
             pass
 
-    fallback = (
-        (_clamp_nd_slope(current_slope), str(reach_id))
-        if current_slope is not None
-        else (_clamp_nd_slope(DEFAULT_ND_SLOPE), None)
-    )
+    fallback = (current_slope, str(reach_id)) if current_slope is not None else (DEFAULT_ND_SLOPE, None)
 
     try:
         ds_xs_geom = _ds_xs_geometry(rfc, ras_xs_data)
@@ -883,7 +886,7 @@ def get_ds_boundary_slope(
     try:
         slope = float(selected["slope"])
         if np.isfinite(slope):
-            return _clamp_nd_slope(slope), str(selected["ID"])
+            return slope, str(selected["ID"])
     except (KeyError, TypeError, ValueError):
         pass
 
@@ -921,7 +924,7 @@ def ras_reaches_metadata(rfc: RasFimConflater, candidate_reaches: gpd.GeoDataFra
                 validate_reach_conflation(ras_xs_data, str(reach.ID))
                 metadata = rfc.get_nwm_reach_metadata(reach.ID)
                 ds_slope, ds_slope_source_nwm_id = get_ds_boundary_slope(rfc, reach.ID, ras_xs_data)
-                metadata["ds_slope"] = ds_slope
+                metadata["ds_slope"] = _clamp_nd_slope(float(f"{ds_slope:.{ND_SLOPE_SIG_FIGS}g}"))
                 if ds_slope_source_nwm_id is not None:
                     metadata["ds_slope_source_nwm_id"] = ds_slope_source_nwm_id
                 reach_metadata[reach.ID] = ras_xs_data | metadata

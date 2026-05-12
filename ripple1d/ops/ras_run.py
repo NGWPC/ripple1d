@@ -59,7 +59,7 @@ def create_model_run_normal_depth(
     for these runs are set to normal depth using the NWM reach slope for the
     submodel's final downstream cross section (falls back to DEFAULT_ND_SLOPE if
     unavailable). The conflation step bounds the value to
-    [MIN_ND_SLOPE, MAX_ND_SLOPE] (currently [1e-6, 0.1]).
+    [MIN_ND_SLOPE, MAX_ND_SLOPE].
     """
     logging.info(f"create_model_run_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)
@@ -168,7 +168,7 @@ def run_incremental_normal_depth(
     the model with a normal depth downstream boundary condition using the NWM
     reach slope for the submodel's final downstream cross section (falls back to
     DEFAULT_ND_SLOPE if unavailable). The conflation step bounds the value to
-    [MIN_ND_SLOPE, MAX_ND_SLOPE] (currently [1e-6, 0.1]).
+    [MIN_ND_SLOPE, MAX_ND_SLOPE].
     """
     logging.info("run_incremental_normal_depth starting")
     nwm_rm = NwmReachModel(submodel_directory)

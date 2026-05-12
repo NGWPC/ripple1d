@@ -19,7 +19,7 @@
             "low_flow": 4280,
             "high_flow": 25819,
             "network_to_id": "2820026",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2821866",
             "metrics": {
                 "xs": {
@@ -76,7 +76,7 @@
             "low_flow": 4280,
             "high_flow": 25824,
             "network_to_id": "2821866",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2821866",
             "metrics": {
                 "xs": {
@@ -138,7 +138,7 @@
             "low_flow": 4280,
             "high_flow": 25832,
             "network_to_id": "2820012",
-            "ds_slope": 0.00046999999904073775,
+            "ds_slope": 0.00047,
             "ds_slope_source_nwm_id": "2820012",
             "metrics": {
                 "xs": {
@@ -202,7 +202,7 @@
             "network_to_id": "2820002",
             "gage": "11290000",
             "gage_url": "https://waterdata.usgs.gov/nwis/uv?site_no=11290000&legacy=1",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2820002",
             "metrics": {
                 "xs": {
@@ -264,7 +264,7 @@
             "low_flow": 4280,
             "high_flow": 25831,
             "network_to_id": "2820006",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2820006",
             "metrics": {
                 "xs": {
@@ -326,7 +326,7 @@
             "low_flow": 412,
             "high_flow": 11271,
             "network_to_id": "2823972",
-            "ds_slope": 0.0008099999977275729,
+            "ds_slope": 0.00081,
             "ds_slope_source_nwm_id": "2823972",
             "metrics": {
                 "xs": {
@@ -388,7 +388,7 @@
             "low_flow": 4251,
             "high_flow": 23506,
             "network_to_id": "2823932",
-            "ds_slope": 0.0013099999632686377,
+            "ds_slope": 0.00131,
             "ds_slope_source_nwm_id": "2823932",
             "metrics": {
                 "xs": {
@@ -450,7 +450,7 @@
             "low_flow": 4252,
             "high_flow": 23506,
             "network_to_id": "2826230",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2826230",
             "metrics": {
                 "xs": {
@@ -512,7 +512,7 @@
             "low_flow": 4271,
             "high_flow": 23529,
             "network_to_id": "2823972",
-            "ds_slope": 0.0008099999977275729,
+            "ds_slope": 0.00081,
             "ds_slope_source_nwm_id": "2823972",
             "metrics": {
                 "xs": {
@@ -574,7 +574,7 @@
             "low_flow": 4253,
             "high_flow": 23506,
             "network_to_id": "2823934",
-            "ds_slope": 0.0013800000306218863,
+            "ds_slope": 0.00138,
             "ds_slope_source_nwm_id": "2823934",
             "metrics": {
                 "xs": {
@@ -636,7 +636,7 @@
             "low_flow": 4254,
             "high_flow": 23506,
             "network_to_id": "2826224",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "2826224",
             "metrics": {
                 "xs": {
@@ -698,7 +698,7 @@
             "low_flow": 4255,
             "high_flow": 23506,
             "network_to_id": "2823960",
-            "ds_slope": 0.0002899999963119626,
+            "ds_slope": 0.00029,
             "ds_slope_source_nwm_id": "2823960",
             "metrics": {
                 "xs": {

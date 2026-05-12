@@ -19,7 +19,7 @@
             "low_flow": 0,
             "high_flow": 51397,
             "network_to_id": "4576960",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 0.00013,
             "ds_slope_source_nwm_id": "4576956",
             "metrics": {
                 "xs": {
@@ -78,7 +78,7 @@
             "network_to_id": "4576958",
             "gage": "04290560",
             "gage_url": "https://waterdata.usgs.gov/nwis/uv?site_no=04290560&legacy=1",
-            "ds_slope": 9.999999747378752e-06,
+            "ds_slope": 1e-05,
             "ds_slope_source_nwm_id": "4576958",
             "metrics": {
                 "xs": {
@@ -140,7 +140,7 @@
             "low_flow": 0,
             "high_flow": 52528,
             "network_to_id": "4576956",
-            "ds_slope": 0.00013000000035390258,
+            "ds_slope": 0.00013,
             "ds_slope_source_nwm_id": "4576956",
             "metrics": {
                 "xs": {

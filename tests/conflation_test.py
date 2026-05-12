@@ -179,28 +179,6 @@ class TestRasFimConflater(unittest.TestCase):
         self.assertEqual(slope, DEFAULT_ND_SLOPE)
         self.assertIsNone(source_id)
 
-    def test_ds_boundary_slope_clamps_selected_reach_slope_below_floor(self):
-        # Selected (downstream) reach has slope 5e-7 < MIN_ND_SLOPE; expect floor
-        rfc = self._make_rfc(
-            xs_geometry=LineString([(2, -1), (2, 1)]),
-            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 5e-7],
-            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
-        )
-        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
-        self.assertEqual(slope, MIN_ND_SLOPE)
-        self.assertEqual(source_id, "2")
-
-    def test_ds_boundary_slope_clamps_selected_reach_slope_above_ceiling(self):
-        # Selected (downstream) reach has slope 0.3 > MAX_ND_SLOPE; expect ceiling
-        rfc = self._make_rfc(
-            xs_geometry=LineString([(2, -1), (2, 1)]),
-            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 0.3],
-            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
-        )
-        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
-        self.assertEqual(slope, MAX_ND_SLOPE)
-        self.assertEqual(source_id, "2")
-
     # _clamp_nd_slope unit tests
     def test_clamp_nd_slope_below_floor_returns_floor(self):
         self.assertEqual(_clamp_nd_slope(5e-7), MIN_ND_SLOPE)

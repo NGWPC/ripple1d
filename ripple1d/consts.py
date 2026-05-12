@@ -23,6 +23,7 @@ DEFAULT_EPSG = 4269
 DEFAULT_ND_SLOPE = 0.001
 MIN_ND_SLOPE = 1e-6  # slope lower bound
 MAX_ND_SLOPE = 0.1  # slope upper bound
+ND_SLOPE_SIG_FIGS = 6  # significant figures for ds_slope in conflation JSON
 
 STAC_API_URL = "https://stac2.dewberryanalytics.com"
 
