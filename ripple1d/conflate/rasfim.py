@@ -5,7 +5,7 @@ import os
 import sqlite3
 import traceback
 from collections import OrderedDict
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 import fiona
 import geopandas as gpd
@@ -16,7 +16,13 @@ from fiona.errors import DriverError
 from shapely import LineString, MultiLineString, Point, Polygon, box, reverse
 from shapely.ops import linemerge, nearest_points, transform
 
-from ripple1d.consts import METERS_PER_FOOT
+from ripple1d.consts import (
+    DEFAULT_ND_SLOPE,
+    MAX_ND_SLOPE,
+    METERS_PER_FOOT,
+    MIN_ND_SLOPE,
+    ND_SLOPE_SIG_FIGS,
+)
 from ripple1d.errors import BadConflation
 from ripple1d.utils.ripple_utils import (
     NWMWalker,
@@ -178,7 +184,7 @@ class RasFimConflater:
             return dict(cur.fetchall())
 
     def determine_station_order(self, xs_gdf: gpd.GeoDataFrame, reach: LineString):
-        """Detemine the order based on stationing of the cross sections along the reach."""
+        """Determine the order based on stationing of the cross sections along the reach."""
         rs = []
         for _, xs in xs_gdf.iterrows():
             geom = reach.intersection(xs.geometry)
@@ -558,7 +564,7 @@ def ras_xs_geometry_data(rfc: RasFimConflater, xs_id: str) -> dict:
 
 
 def get_us_most_xs_from_junction(rfc, us_river, us_reach):
-    """Search for river reaches at junctions and return xs closest ds reach at junciton."""
+    """Search for river reaches at junctions and return xs closest ds reach at junction."""
     if rfc.ras_junctions is None:
         raise ValueError("No junctions found in the HEC-RAS model.")
     ds_rivers, ds_reaches = None, None
@@ -646,14 +652,14 @@ def map_reach_xs(rfc: RasFimConflater, reach: gpd.GeoSeries) -> dict:
     # find most us and ds xs making sure that they are hydrologicaly connected.
     us_xs, ds_xs = retrieve_us_ds_xs(rfc, intersected_xs, reach)
 
-    # detemine if us end of the nwm reach is between two cross sections. If so grab the upstream cross section (only if stream order=1)
+    # determine if us end of the nwm reach is between two cross sections. If so grab the upstream cross section (only if stream order=1)
     if reach.stream_order == 1 and reach.ID not in rfc.nwm_reaches["to_id"].values:
         us_xs = check_for_us_xs(us_xs, rfc.ras_xs)
 
     # Initialize us_xs data with min /max elevation, then build the dict with added info
     us_data = ras_xs_geometry_data(rfc, us_xs)
 
-    # get infor for the current ds_xs
+    # get info for the current ds_xs
     ras_river = rfc.ras_xs.loc[rfc.ras_xs["river_reach_rs"] == ds_xs, "river"].iloc[0]
     ras_reach = rfc.ras_xs.loc[rfc.ras_xs["river_reach_rs"] == ds_xs, "reach"].iloc[0]
     river_station = rfc.ras_xs.loc[rfc.ras_xs["river_reach_rs"] == ds_xs, "river_station"].iloc[0]
@@ -772,6 +778,125 @@ def retrieve_us_ds_xs(rfc: RasFimConflater, intersected_xs: gpd.GeoDataFrame, re
     return us_xs, ds_xs
 
 
+def _ds_xs_geometry(rfc: RasFimConflater, ras_xs_data: dict) -> LineString:
+    """Return the geometry for the finalized downstream RAS cross section."""
+    ds_xs = ras_xs_data["ds_xs"]
+    ras_xs = rfc.ras_xs
+    matches = ras_xs[
+        (ras_xs["river"] == ds_xs["river"])
+        & (ras_xs["reach"] == ds_xs["reach"])
+        & (ras_xs["river_station"] == ds_xs["xs_id"])
+    ]
+    if matches.empty:
+        raise KeyError(f"Could not find downstream XS geometry for {ds_xs}")
+    return matches.geometry.iloc[0]
+
+
+def _clamp_nd_slope(value: float) -> float:
+    """Clamp a normal-depth slope to [MIN_ND_SLOPE, MAX_ND_SLOPE].
+
+    Logs a WARNING when the value is outside the bounds.
+    """
+    clamped = min(max(value, MIN_ND_SLOPE), MAX_ND_SLOPE)
+    if clamped != value:
+        logging.warning(
+            "Clamped ds_slope from %s to %s (bounds [%s, %s])",
+            value, clamped, MIN_ND_SLOPE, MAX_ND_SLOPE,
+        )
+    return clamped
+
+
+def _select_ds_slope_reach(
+    candidates: gpd.GeoDataFrame, current_reach_id, tree_dict: dict
+) -> Optional[pd.Series]:
+    """Select the NWM reach whose slope should define the downstream boundary.
+
+    When the downstream XS intersects multiple NWM reaches, walk downstream
+    from the current reach via the to_id chain and pick the furthest
+    downstream candidate. The current reach is a valid candidate if it
+    intersects the ds_xs.
+    """
+    if len(candidates) == 1:
+        return candidates.iloc[0]
+
+    candidate_ids = set(candidates["ID"])
+    most_downstream = current_reach_id if current_reach_id in candidate_ids else None
+    visited = {current_reach_id}
+    current = current_reach_id
+
+    while current in tree_dict:
+        current = tree_dict[current]
+        if current in visited:
+            break
+        visited.add(current)
+        if current in candidate_ids:
+            most_downstream = current  # last match in walk = furthest downstream
+
+    if most_downstream is None:
+        return None
+    return candidates[candidates["ID"] == most_downstream].iloc[0]
+
+
+def get_ds_boundary_slope(
+    rfc: RasFimConflater, reach_id, ras_xs_data: dict
+) -> Tuple[float, Optional[str]]:
+    """Return the normal-depth slope from the NWM reach intersecting the downstream XS.
+
+    Falls back to the current reach's slope, then DEFAULT_ND_SLOPE, when no
+    candidate is found on the downstream path. Returned slope is the raw
+    hydrofabric value; callers persisting it for the 1D HEC-RAS steady-flow
+    solver must clamp it via `_clamp_nd_slope`.
+    """
+    current_matches = rfc.nwm_reaches[rfc.nwm_reaches["ID"] == reach_id]
+    current_reach_row = current_matches.iloc[0] if not current_matches.empty else None
+
+    current_slope = None
+    if current_reach_row is not None:
+        try:
+            s = float(current_reach_row["slope"])
+            if np.isfinite(s):
+                current_slope = s
+        except (KeyError, TypeError, ValueError):
+            pass
+
+    fallback = (current_slope, str(reach_id)) if current_slope is not None else (DEFAULT_ND_SLOPE, None)
+
+    try:
+        ds_xs_geom = _ds_xs_geometry(rfc, ras_xs_data)
+    except (KeyError, TypeError, ValueError) as e:
+        logging.warning(
+            "Could not resolve downstream XS geometry for %s; falling back. Error: %s",
+            reach_id, e,
+        )
+        return fallback
+
+    candidates = rfc.nwm_reaches[rfc.nwm_reaches.intersects(ds_xs_geom)]
+    if candidates.empty:
+        logging.warning("No NWM reach intersects downstream XS for %s; falling back", reach_id)
+        return fallback
+
+    selected = _select_ds_slope_reach(candidates, reach_id, rfc.nwm_walker.tree_dict)
+    if selected is None:
+        logging.warning(
+            "No candidate on downstream path for %s; falling back to current reach slope or default",
+            reach_id,
+        )
+        return fallback
+
+    try:
+        slope = float(selected["slope"])
+        if np.isfinite(slope):
+            return slope, str(selected["ID"])
+    except (KeyError, TypeError, ValueError):
+        pass
+
+    logging.warning(
+        "No valid slope data for downstream boundary reach %s; falling back",
+        selected["ID"],
+    )
+    return fallback
+
+
 def validate_reach_conflation(reach_xs_data: dict, reach_id: str):
     """Raise error for invalid conflation.
 
@@ -797,7 +922,12 @@ def ras_reaches_metadata(rfc: RasFimConflater, candidate_reaches: gpd.GeoDataFra
             ras_xs_data = map_reach_xs(rfc, reach)
             if ras_xs_data is not None:
                 validate_reach_conflation(ras_xs_data, str(reach.ID))
-                reach_metadata[reach.ID] = ras_xs_data | rfc.get_nwm_reach_metadata(reach.ID)
+                metadata = rfc.get_nwm_reach_metadata(reach.ID)
+                ds_slope, ds_slope_source_nwm_id = get_ds_boundary_slope(rfc, reach.ID, ras_xs_data)
+                metadata["ds_slope"] = _clamp_nd_slope(float(f"{ds_slope:.{ND_SLOPE_SIG_FIGS}g}"))
+                if ds_slope_source_nwm_id is not None:
+                    metadata["ds_slope_source_nwm_id"] = ds_slope_source_nwm_id
+                reach_metadata[reach.ID] = ras_xs_data | metadata
         except Exception as e:
             logging.error(f"network id: {reach.ID} | Error: {e}")
             logging.error(f"network id: {reach.ID} | Traceback: {traceback.format_exc()}")

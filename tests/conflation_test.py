@@ -1,21 +1,21 @@
-import json
-import logging
 import os
 import unittest
 
 import geopandas as gpd
-import pandas as pd
+import numpy as np
 import pytest
 from shapely.geometry import LineString, MultiLineString, Point, Polygon
 
 from ripple1d.conflate.rasfim import (
     RasFimConflater,
+    _clamp_nd_slope,
     cacl_avg_nearest_points,
     count_intersecting_lines,
     endpoints_from_multiline,
+    get_ds_boundary_slope,
     nearest_line_to_point,
 )
-from ripple1d.ops.ras_conflate import conflate_model
+from ripple1d.consts import DEFAULT_ND_SLOPE, MAX_ND_SLOPE, MIN_ND_SLOPE
 
 TEST_DIR = os.path.dirname(__file__)
 TEST_ITEM_FILE = "ras-data/Baxter.json"
@@ -107,6 +107,95 @@ class TestRasFimConflater(unittest.TestCase):
         nwm_reaches = gpd.GeoDataFrame({"geometry": [LineString([(0, 0), (1, 1)])]}, crs="EPSG:4326")
         count = count_intersecting_lines(ras_xs, nwm_reaches)
         self.assertEqual(count.shape[0], 1)
+
+    def _make_rfc(self, xs_geometry, reach_ids, to_ids, slopes, reach_geometries):
+        nwm_reaches = gpd.GeoDataFrame({
+            "ID": reach_ids, "to_id": to_ids, "slope": slopes,
+            "geometry": reach_geometries,
+        })
+        walker = type("MockWalker", (), {"tree_dict": dict(zip(reach_ids, to_ids))})()
+        return type("TestConflater", (), {
+            "ras_xs": gpd.GeoDataFrame({
+                "river": ["A"], "reach": ["A"], "river_station": [1.0],
+                "geometry": [xs_geometry],
+            }),
+            "nwm_reaches": nwm_reaches,
+            "nwm_walker": walker,
+        })()
+
+    def test_ds_boundary_slope_uses_current_reach_when_ds_xs_intersects_current_reach(self):
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(1, -1), (1, 1)]),
+            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 0.005],
+            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, 0.001)
+        self.assertEqual(source_id, "1")
+
+    def test_ds_boundary_slope_prefers_downstream_reach_when_ds_xs_intersects_both_reaches(self):
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(2, -1), (2, 1)]),
+            reach_ids=[1, 2], to_ids=[2, -9999], slopes=[0.001, 0.005],
+            reach_geometries=[LineString([(0, 0), (2, 0)]), LineString([(2, 0), (4, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, 0.005)
+        self.assertEqual(source_id, "2")
+
+    def test_ds_boundary_slope_falls_back_to_current_reach_when_no_candidate_on_downstream_path(self):
+        # xs intersects reaches 2 and 3, but neither is downstream of current reach 1
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(2, -1), (2, 1)]),
+            reach_ids=[1, 2, 3], to_ids=[-9999, -9999, -9999], slopes=[0.002, 0.005, 0.007],
+            reach_geometries=[
+                LineString([(10, 0), (12, 0)]),  # reach 1: far from xs (current reach)
+                LineString([(0, 0), (2, 0)]),    # reach 2: intersects xs
+                LineString([(2, 0), (4, 0)]),    # reach 3: intersects xs
+            ],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, 0.002)
+        self.assertEqual(source_id, "1")
+
+    def test_ds_boundary_slope_falls_back_to_current_reach_when_no_candidates(self):
+        # xs is far from all reaches, so candidates is empty; current reach has valid slope
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(100, -1), (100, 1)]),
+            reach_ids=[1], to_ids=[-9999], slopes=[0.003],
+            reach_geometries=[LineString([(0, 0), (2, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, 0.003)
+        self.assertEqual(source_id, "1")
+
+    def test_ds_boundary_slope_falls_back_to_default_when_no_valid_slope_anywhere(self):
+        rfc = self._make_rfc(
+            xs_geometry=LineString([(1, -1), (1, 1)]),
+            reach_ids=[1], to_ids=[-9999], slopes=[np.nan],
+            reach_geometries=[LineString([(0, 0), (2, 0)])],
+        )
+        slope, source_id = get_ds_boundary_slope(rfc, 1, {"ds_xs": {"river": "A", "reach": "A", "xs_id": 1}})
+        self.assertEqual(slope, DEFAULT_ND_SLOPE)
+        self.assertIsNone(source_id)
+
+    # _clamp_nd_slope unit tests
+    def test_clamp_nd_slope_below_floor_returns_floor(self):
+        self.assertEqual(_clamp_nd_slope(5e-7), MIN_ND_SLOPE)
+
+    def test_clamp_nd_slope_above_ceiling_returns_ceiling(self):
+        self.assertEqual(_clamp_nd_slope(0.3), MAX_ND_SLOPE)
+
+    def test_clamp_nd_slope_at_exact_floor_unchanged(self):
+        self.assertEqual(_clamp_nd_slope(MIN_ND_SLOPE), MIN_ND_SLOPE)
+
+    def test_clamp_nd_slope_at_exact_ceiling_unchanged(self):
+        self.assertEqual(_clamp_nd_slope(MAX_ND_SLOPE), MAX_ND_SLOPE)
+
+    def test_clamp_nd_slope_within_bounds_unchanged(self):
+        for value in (0.005, DEFAULT_ND_SLOPE, 9.999999747378752e-06):
+            with self.subTest(value=value):
+                self.assertEqual(_clamp_nd_slope(value), value)
 
 
 # TODO: Update to remove refernce to windows User directory
