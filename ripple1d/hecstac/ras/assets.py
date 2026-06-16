@@ -428,7 +428,7 @@ class GeometryAsset(GenericAsset[GeometryFile]):
                         "profile_names",
                     ] = "\n".join(row["profile_names"])
 
-        xs_gdf["flow_tile"] = model_meta["primary_flow_title"]
+        xs_gdf["flow_title"] = model_meta["primary_flow_title"]
         xs_gdf["plan_title"] = model_meta["primary_plan_title"]
         xs_gdf["geom_title"] = model_meta["primary_geom_title"]
         xs_gdf["version"] = model_meta["ras_version"]
