@@ -75,8 +75,13 @@ class RippleGeopackageSubsetter:
                 self.ripple_gpkg_file, {"units": self.source_model_metadata["units"], "steady": "False"}
             )
         else:
-            raise ValueError(
-                f"Expected forcing extension to be .fxx, .uxx, or .qxx. Recieved {flow_file_extension} for submodel: {self.nwm_id}"
+            if not self.ignore_ras_flows:
+                raise ValueError(
+                    f"Expected forcing extension to be .fxx, .uxx, or .qxx. Recieved {flow_file_extension} for submodel: {self.nwm_id}"
+                )
+            else:
+             logging.warning(
+                f"Skipping flow file validation as ignore_ras_flows is True. Received extension: {flow_file_extension} for submodel: {self.nwm_id}"
             )
 
     @property
