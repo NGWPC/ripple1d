@@ -244,28 +244,28 @@ class Converter:
     def metadata(self):
         """Generate dictionary of metadata for HEC-RAS model"""
         meta = {}
-        meta["plans_files"] = "\n".join([a.url.replace(self.root, "") for a in self.assets if isinstance(a, PlanAsset)])
+        meta["plans_files"] = "\n".join([Path(a.url).name for a in self.assets if isinstance(a, PlanAsset)])
         meta["geom_files"] = "\n".join(
-            [a.url.replace(self.root, "") for a in self.assets if isinstance(a, GeometryAsset)]
+            [Path(a.url).name for a in self.assets if isinstance(a, GeometryAsset)]
         )
         meta["steady_flow_files"] = "\n".join(
-            [a.url.replace(self.root, "") for a in self.assets if isinstance(a, SteadyFlowAsset)]
+            [Path(a.url).name for a in self.assets if isinstance(a, SteadyFlowAsset)]
         )
         meta["unsteady_flow_files"] = "\n".join(
-            [a.url.replace(self.root, "") for a in self.assets if isinstance(a, UnsteadyFlowAsset)]
+            [Path(a.url).name for a in self.assets if isinstance(a, UnsteadyFlowAsset)]
         )
 
         meta["plans_titles"] = "\n".join([a.title for a in self.assets if isinstance(a, PlanAsset)])
         meta["geom_titles"] = "\n".join([a.title for a in self.assets if isinstance(a, GeometryAsset)])
         meta["steady_flow_titles"] = "\n".join([a.title for a in self.assets if isinstance(a, SteadyFlowAsset)])
 
-        meta["ras_project_file"] = self.ras_prj_file.url.replace(self.root, "")
+        meta["ras_project_file"] = Path(self.ras_prj_file.url).name
         meta["ras_project_title"] = self.ras_prj_file.title
-        meta["primary_plan_file"] = self.primary_plan.url.replace(self.root, "")
+        meta["primary_plan_file"] = Path(self.primary_plan.url).name
         meta["primary_plan_title"] = self.primary_plan.title
-        meta["primary_flow_file"] = self.primary_flow.url.replace(self.root, "")
+        meta["primary_flow_file"] = Path(self.primary_flow.url).name
         meta["primary_flow_title"] = self.primary_flow.title
-        meta["primary_geom_file"] = self.primary_geometry.url.replace(self.root, "")
+        meta["primary_geom_file"] = Path(self.primary_geometry.url).name
         meta["primary_geom_title"] = self.primary_geometry.title
 
         meta["ras_version"] = self.primary_geometry.ras_version
