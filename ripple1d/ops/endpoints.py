@@ -7,7 +7,7 @@ import sys
 from typing import Callable
 
 from ripple1d.consts import SUPPRESS_LOGS
-from ripple1d.hecstac.ras_to_gpkg import gpkg_from_ras
+from ripple1d.ras_stac.ras1d.converter import gpkg_from_ras
 from ripple1d.ops.fim_lib import create_fim_lib, create_scenarios_db
 from ripple1d.ops.metrics import compute_conflation_metrics
 from ripple1d.ops.ras_conflate import conflate_model

@@ -1,111 +1,33 @@
-"""Utility functions for the hecstac ras module."""
-
 import logging
 import os
-import re
 from functools import wraps
-from io import BytesIO
-from pathlib import Path
-from typing import Callable
 
-import contextily as ctx
 import geopandas as gpd
-import matplotlib.pyplot as plt
 import numpy as np
-from pyproj import CRS
 from shapely import lib
 from shapely.errors import UnsupportedGEOSVersionError
 from shapely.geometry import LineString, MultiPoint, Point
 
-from ripple1d.hecstac.common.base_io import ModelFileReader
-from ripple1d.hecstac.common.s3_utils import save_bytes_s3
 
-
-def export_thumbnail(layers: list[Callable], title: str, crs: CRS, filepath: str):
-    """Generate a thumbnail and save it."""
-    fig, ax = plt.subplots(figsize=(12, 12))
-
-    # Add data
-    legend_handles = []
-    for layer in layers:
-        try:
-            legend_handles += layer(ax)
-        except Exception:
-            continue
-
-    # Add OpenStreetMap basemap
-    try:
-        ctx.add_basemap(ax, crs=crs, source=ctx.providers.OpenStreetMap.Mapnik)
-    except Exception as e:
-        pass
-
-    # Formatting
-    ax.set_title(title)
-    ax.set_xlabel("Longitude")
-    ax.set_ylabel("Latitude")
-    ax.legend(handles=legend_handles, loc="center left", bbox_to_anchor=(1, 0.5))
-    fig.tight_layout()
-
-    # Save
-    if filepath.startswith("s3://"):
-        img_data = BytesIO()
-        fig.savefig(img_data, format="png", bbox_inches="tight")
-        img_data.seek(0)
-        save_bytes_s3(img_data, filepath)
-    else:
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
-        fig.savefig(filepath, dpi=80, bbox_inches="tight")
-
-    # Close fig
-    plt.close(fig)
-
-
-def find_model_files(ras_prj: str) -> list[str]:
-    # TODO: Add option to recursively iterate through all subdirectories in a model folder.
-    # TODO: Add option to search for files on S3.
-    """Find all files with the same base name and return absolute paths."""
-    ras_prj = Path(ras_prj).resolve()
-    parent = ras_prj.parent
-    stem = ras_prj.stem
-    return [str(i.resolve()) for i in parent.glob(f"{stem}*")]
-
-
-def is_ras_prj(url: str) -> bool:
-    """Check if a file is a HEC-RAS project file."""
-    file_str = ModelFileReader(url).content
-    if "Proj Title" in file_str.split("\n")[0]:
+def prj_is_ras(prj_contents: str):
+    """Verify if prj is from hec-ras model."""
+    if "Proj Title" in prj_contents.split("\n")[0]:
         return True
     else:
         return False
 
 
-def search_contents(
-    lines: list[str],
-    search_string: str,
-    token: str = "=",
-    expect_one: bool = True,
-    require_one: bool = True,
-    regex: bool = False,
-) -> list[str] | str:
-    """Split a line by a token and returns the second half of the line if the search_string is found in the first half.
-
-    The regex option assumes that the token is included in the regex.
-    """
-    if regex:
-        matches = lambda x: re.match(search_string, x)
-    else:
-        matches = lambda x: f"{search_string}{token}" in x
+def search_contents(lines: list, search_string: str, token: str = "=", expect_one: bool = True) -> list[str]:
+    """Split a line by a token and returns the second half of the line if the search_string is found in the first half."""
     results = []
     for line in lines:
-        if matches(line):
-            val = line.split(token)[1]
-            if val != "":
-                results.append(val)
+        if f"{search_string}{token}" in line:
+            results.append(line.split(token)[1])
 
     if expect_one and len(results) > 1:
-        raise ValueError(f"expected 1 result for {search_string}, got {len(results)} results")
-    elif require_one and len(results) == 0:
-        raise ValueError(f"1 result for {search_string} is required, no results found")
+        raise ValueError(f"expected 1 result, got {len(results)}")
+    elif expect_one and len(results) == 0:
+        raise ValueError("expected 1 result, no results found")
     elif expect_one and len(results) == 1:
         return results[0]
     else:
@@ -173,7 +95,7 @@ def text_block_from_start_str_to_empty_line(start_str: str, lines: list) -> list
     return results
 
 
-def text_block_from_start_str_length(start_str: str, number_of_lines: int, lines: list[str]) -> list[str]:
+def text_block_from_start_str_length(start_str: str, number_of_lines: int, lines: list) -> list[str]:
     """Search for an exact match to the start token and return a number of lines equal to number_of_lines."""
     start_str = handle_spaces(start_str, lines)
     results = []
@@ -189,43 +111,14 @@ def text_block_from_start_str_length(start_str: str, number_of_lines: int, lines
                 results.append(line)
 
 
-def data_pairs_from_text_block(lines: list[str], width: int) -> list[tuple[float, float]]:
+def data_pairs_from_text_block(lines: list[str], width: int) -> list[tuple[float]]:
     """Split lines at given width to get paired data string. Split the string in half and convert to tuple of floats."""
     pairs = []
     for line in lines:
-        if line == "               .               .":
-            continue
         for i in range(0, len(line), width):
             x = line[i : int(i + width / 2)]
             y = line[int(i + width / 2) : int(i + width)]
             pairs.append((float(x), float(y)))
-
-    return pairs
-
-
-def delimited_pairs_to_lists(lines: list[str]) -> tuple[list[float], list[float]]:
-    """Extract subdivisions from the manning's text block."""
-    stations = []
-    mannings = []
-    for line in lines:
-        pairs = line.split("       0")
-        for p in pairs[:-1]:
-            station = float(p[:8])
-            n = float(p[8:])
-            stations.append(station)
-            mannings.append(n)
-    return (stations, mannings)
-
-
-def data_triplets_from_text_block(lines: list[str], width: int) -> list[tuple[float]]:
-    """Split lines at given width to get paired data string. Split the string in half and convert to tuple of floats."""
-    pairs = []
-    for line in lines:
-        for i in range(0, len(line), width):
-            x = line[i : int(i + width / 3)]
-            y = line[int(i + width / 3) : int(i + (width * 2 / 3))]
-            z = line[int(i + (width * 2 / 3)) : int(i + (width))]
-            pairs.append((float(x), float(y), float(z)))
 
     return pairs
 
@@ -258,6 +151,9 @@ def check_xs_direction(cross_sections: gpd.GeoDataFrame, reach: LineString):
                     river_reach_rs.append(xs["river_reach_rs"])
 
         except IndexError as e:
+            logging.debug(
+                f"cross section does not intersect river-reach: {xs['river']} {xs['reach']} {xs['river_station']}: error: {e}"
+            )
             continue
     return cross_sections.loc[cross_sections["river_reach_rs"].isin(river_reach_rs)]
 
@@ -276,16 +172,13 @@ def validate_point(geom):
         raise TypeError(f"expected point at xs-river intersection got: {type(geom)} | {geom}")
 
 
-class RequireGeos:
-    """Unsure."""
-
+class requires_geos:
     def __init__(self, version):
         if version.count(".") != 2:
             raise ValueError("Version must be <major>.<minor>.<patch> format")
         self.version = tuple(int(x) for x in version.split("."))
 
     def __call__(self, func):
-        """Call."""
         is_compatible = lib.geos_version >= self.version
         is_doc_build = os.environ.get("SPHINX_DOC_BUILD") == "1"  # set in docs/conf.py
         if is_compatible and not is_doc_build:
@@ -321,12 +214,11 @@ class RequireGeos:
 
 
 def multithreading_enabled(func):
-    """
-    Prepare multithreading by setting the writable flags of object type ndarrays to False.
+    """Prepare multithreading by setting the writable flags of object type
+    ndarrays to False.
 
     NB: multithreading also requires the GIL to be released, which is done in
-    the C extension (ufuncs.c).
-    """
+    the C extension (ufuncs.c)."""
 
     @wraps(func)
     def wrapped(*args, **kwargs):
@@ -347,10 +239,10 @@ def multithreading_enabled(func):
     return wrapped
 
 
-@RequireGeos("3.7.0")
+@requires_geos("3.7.0")
 @multithreading_enabled
 def reverse(geometry, **kwargs):
-    """Return a copy of a Geometry with the order of coordinates reversed.
+    """Returns a copy of a Geometry with the order of coordinates reversed.
 
     If a Geometry is a polygon with interior rings, the interior rings are also
     reversed.
@@ -361,9 +253,9 @@ def reverse(geometry, **kwargs):
     ----------
     geometry : Geometry or array_like
     **kwargs
-        See `NumPy ufunc docs <ufuncs.kwargs>` for other keyword arguments.
+        See :ref:`NumPy ufunc docs <ufuncs.kwargs>` for other keyword arguments.
 
-    See Also
+    See also
     --------
     is_ccw : Checks if a Geometry is clockwise.
 
@@ -377,4 +269,5 @@ def reverse(geometry, **kwargs):
     >>> reverse(None) is None
     True
     """
+
     return lib.reverse(geometry, **kwargs)

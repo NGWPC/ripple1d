@@ -12,7 +12,7 @@ from werkzeug.exceptions import BadRequest
 
 from ripple1d.api import tasks
 from ripple1d.api.utils import get_unexpected_and_missing_args
-from ripple1d.hecstac.ras_to_gpkg import gpkg_from_ras
+from ripple1d.ras_stac.ras1d.converter import gpkg_from_ras
 from ripple1d.ops.fim_lib import create_fim_lib, create_scenarios_db
 from ripple1d.ops.metrics import compute_conflation_metrics
 from ripple1d.ops.ras_conflate import conflate_model
